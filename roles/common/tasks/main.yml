@@ -1,0 +1,11 @@
+---
+- name: Add backports repository
+  apt_repository:
+    repo: "deb http://ftp.sg.debian.org/debian jessie-backports main"
+    state: present
+
+- name: Enable TCP fast open
+  sysctl:
+    name: net.ipv4.tcp_fastopen
+    value: 3
+    state: present
