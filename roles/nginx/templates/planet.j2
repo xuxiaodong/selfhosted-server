@@ -1,0 +1,23 @@
+server {
+    listen  80;
+
+    root /var/www/ttrss;
+    index index.html index.htm index.php;
+
+    access_log /var/log/nginx/ttrss_access.log;
+    error_log /var/log/nginx/ttrss_error.log info;
+
+    server_name {{ nginx.domain_name }};
+
+    location / {
+        index           index.php;
+    }
+
+    location ~ \.php$ {
+        try_files $uri = 404;
+        fastcgi_pass unix:/var/run/php5-fpm.sock;
+        fastcgi_index index.php;
+        include /etc/nginx/fastcgi_params;
+    }
+
+}

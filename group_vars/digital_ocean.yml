@@ -8,3 +8,9 @@ shadowsocks:
   enable_ota: "true"
   location: "/etc/shadowsocks-libev"
   password_file: "/etc/shadowsocks-libev/shadowsocks-password.txt"
+
+nginx:
+  domain_name: "planet.unixkoans.com"
+
+postgresql:
+  password_file: "/etc/postgresql/postgresql-password.txt"
