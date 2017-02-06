@@ -13,5 +13,5 @@
 - hosts: digital_ocean
   become: True
 
-  tasks:
-  - ping:
+  roles:
+  - shadowsocks

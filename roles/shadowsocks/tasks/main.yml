@@ -1,0 +1,31 @@
+---
+- name: Enable TCP fast open
+  sysctl:
+    name: net.ipv4.tcp_fastopen
+    value: 3
+    state: present
+
+- name: Add repository
+  apt_repository:
+    repo: "deb http://httpredir.debian.org/debian jessie-backports main"
+    state: present
+
+- name: Install shadowsocks-libev
+  apt:
+    name: shadowsocks-libev
+
+- name: Generate Shadowsocks password
+  shell: openssl rand -base64 48 > {{ shadowsocks.password_file }}
+  args:
+    creates: "{{ shadowsocks.password_file }}"
+
+- name: Get Shadowsocks password
+  command: cat {{ shadowsocks.password_file }}
+  register: shadowsocks_password
+
+- name: Generate Shadowsocks config
+  template:
+    src: config.json.j2
+    dest: "{{ shadowsocks.location }}/config.json"
+    mode: 0640
+  notify: Restart shadowsocks-libev
