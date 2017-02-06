@@ -1,0 +1,17 @@
+---
+- hosts: local
+  become: True
+
+  vars_prompt:
+  - name: do_api_token_entry
+    prompt: "Your DigitalOcean API access token"
+    private: no
+
+  roles:
+  - droplet
+
+- hosts: digital_ocean
+  become: True
+
+  tasks:
+  - ping:
