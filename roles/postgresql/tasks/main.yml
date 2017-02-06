@@ -1,0 +1,7 @@
+---
+- name: Install postgresql
+  apt:
+    name: postgresql
+    state: latest
+    default_release: jessie-backports
+    update_cache: yes
