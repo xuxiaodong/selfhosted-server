@@ -1,0 +1,20 @@
+---
+- name: Get tt-rss source
+  git:
+    repo: https://tt-rss.org/gitlab/fox/tt-rss.git
+    dest: /var/www/ttrss
+
+- name: Change owner of ttrss
+  file:
+    path: /var/www/ttrss
+    owner: www-data
+    group: www-data
+    recurse: yes
+    state: directory
+
+- name: Add cron
+  cron:
+    name: "check feeds"
+    minute: "*/30"
+    user: www-data
+    job: "/usr/bin/php /var/www/ttrss/update.php --feeds --quiet"
