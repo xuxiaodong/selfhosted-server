@@ -1,7 +1,34 @@
 ---
 - name: Install postgresql
   apt:
-    name: postgresql
+    name: "{{ item }}"
     state: latest
     default_release: jessie-backports
     update_cache: yes
+  with_items:
+  - postgresql
+  - libpq-dev
+  - python-psycopg2
+
+- name: Generate postgresql user password
+  shell: openssl rand -base64 16 > {{ postgresql.password_file }}
+  args:
+    creates: "{{ postgresql.password_file }}"
+
+- name: Get postgresql user password
+  command: cat {{ postgresql.password_file }}
+  register: postgresql_password
+
+- name: Create user
+  postgresql_user:
+    name: www-data
+    password: "{{ postgresql_password }}"
+  become: true
+  become_user: postgres
+
+- name: Create database
+  postgresql_db:
+    name: ttrss
+    owner: www-data
+  become: true
+  become_user: postgres
