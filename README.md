@@ -7,6 +7,7 @@ selfhosted-server
 
 + droplet：在 DigitalOcean 上创建 droplet
 + shadowsocks：架设 Shadowsocks 服务（Shadowsocks-libev）
++ nginx：架设 Web 服务
 
 ## 用法
 

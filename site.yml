@@ -16,3 +16,4 @@
   roles:
   - common
   - shadowsocks
+  - nginx
