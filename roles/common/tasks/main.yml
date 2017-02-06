@@ -4,6 +4,16 @@
     repo: "deb http://ftp.sg.debian.org/debian jessie-backports main"
     state: present
 
+- name: Install common packages
+  apt:
+    name: "{{ item }}"
+    state: latest
+    default_release: jessie-backports
+    update_cache: yes
+  with_items:
+  - htop
+  - git
+
 - name: Enable TCP fast open
   sysctl:
     name: net.ipv4.tcp_fastopen
