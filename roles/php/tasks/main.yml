@@ -1,0 +1,12 @@
+---
+- name: Install php
+  apt:
+    name: "{{ item }}"
+    state: latest
+    default_release: jessie-backports
+    update_cache: yes
+  with_items:
+  - php5-fpm
+  - php5-json
+  - php5-curl
+  - php5-gd

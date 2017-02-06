@@ -9,6 +9,7 @@ selfhosted-server
 + shadowsocks：架设 Shadowsocks 服务（Shadowsocks-libev）
 + nginx：架设 Web 服务
 + postgresql：架设数据库服务
++ php：PHP 语言环境
 
 ## 用法
 
