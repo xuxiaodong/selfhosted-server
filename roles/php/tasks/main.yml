@@ -11,3 +11,10 @@
   - php5-curl
   - php5-gd
   - php5-pgsql
+
+- name: Generate php fpm config
+  template:
+    src: www.conf.j2
+    dest: /etc/php5/fpm/pool.d/www.conf
+    mode: 0644
+  notify: Restart fpm
