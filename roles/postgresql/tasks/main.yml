@@ -32,3 +32,10 @@
     owner: www-data
   become: true
   become_user: postgres
+
+- name: Generate postgresql config
+  template:
+    src: postgresql.conf.j2
+    dest: /etc/postgresql/9.6/main/postgresql.conf
+    mode: 0644
+  notify: Restart postgresql
