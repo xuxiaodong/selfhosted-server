@@ -11,9 +11,10 @@
     default_release: jessie-backports
     update_cache: yes
   with_items:
-  - iotop
-  - htop
+  - apt-transport-https
   - git
+  - htop
+  - iotop
 
 - name: Enable TCP fast open
   sysctl:
