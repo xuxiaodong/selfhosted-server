@@ -10,6 +10,8 @@ selfhosted-server
 + nginx：架设 Web 服务
 + postgresql：架设数据库服务
 + php：PHP 语言环境
++ ttrss：Tiny Tiny RSS 阅读器
++ syncthing：Syncthing P2P 持续同步
 
 ## 用法
 

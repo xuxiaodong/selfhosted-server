@@ -1,0 +1,22 @@
+---
+- name: Add key
+  apt_key:
+    url: "https://syncthing.net/release-key.txt"
+    state: present
+
+- name: Add repository
+  apt_repository:
+    repo: deb https://apt.syncthing.net/ syncthing release
+    state: present
+
+- name: Install syncthing
+  apt:
+    name: syncthing
+    state: latest
+    update_cache: yes
+
+- name: Enable service
+  systemd:
+    name: syncthing@root
+    state: started
+    enabled: yes

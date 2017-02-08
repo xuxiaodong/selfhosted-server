@@ -15,13 +15,19 @@
 
 - name: Add virtual host config
   template:
-    src: planet.j2
-    dest: /etc/nginx/sites-available/planet
+    src: "{{ item.src }}"
+    dest: "/etc/nginx/sites-available/{{ item.dest }}"
     mode: 0644
+  with_items:
+  - { src: "planet.j2", dest: "planet" }
+  - { src: "sync.j2", dest: "sync" }
   notify: Restart Nginx
 
 - name: Enable virtual host
   file:
-    src: /etc/nginx/sites-available/planet
-    dest: /etc/nginx/sites-enabled/planet
+    src: "/etc/nginx/sites-available/{{ item.src }}"
+    dest: "/etc/nginx/sites-enabled/{{ item.dest }}"
     state: link
+  with_items:
+  - { src: "planet", dest: "planet" }
+  - { src: "sync", dest: "sync" }

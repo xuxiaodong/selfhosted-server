@@ -7,7 +7,7 @@ server {
     access_log /var/log/nginx/ttrss_access.log;
     error_log /var/log/nginx/ttrss_error.log info;
 
-    server_name {{ nginx.domain_name }};
+    server_name {{ nginx.rss_domain_name }};
 
     location / {
         index           index.php;

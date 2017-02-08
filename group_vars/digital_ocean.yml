@@ -10,7 +10,8 @@ shadowsocks:
   password_file: "/etc/shadowsocks-libev/shadowsocks-password.txt"
 
 nginx:
-  domain_name: "planet.unixkoans.com"
+  rss_domain_name: "planet.unixkoans.com"
+  sync_domain_name: "sync.unixkoans.com"
 
 postgresql:
   password_file: "/etc/postgresql/postgresql-password.txt"
