@@ -28,8 +28,11 @@
 
 - name: Create database
   postgresql_db:
-    name: ttrss
+    name: "{{ item }}"
     owner: www-data
+  with_items:
+  - ttrss
+  - stikked
   become: true
   become_user: postgres
 

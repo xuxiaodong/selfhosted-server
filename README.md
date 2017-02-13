@@ -12,6 +12,7 @@ selfhosted-server
 + php：[PHP][7] 语言环境
 + ttrss：[Tiny Tiny RSS][8] 阅读器
 + syncthing：[Syncthing][9] P2P 持续同步
++ [stikked][10]：Paste 服务
 
 ## 用法
 
@@ -26,3 +27,4 @@ selfhosted-server
 [7]: http://php.net/
 [8]: https://tt-rss.org/
 [9]: https://syncthing.net/
+[10]: https://github.com/claudehohl/Stikked

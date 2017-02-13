@@ -21,6 +21,7 @@
   with_items:
   - { src: "planet.j2", dest: "planet" }
   - { src: "sync.j2", dest: "sync" }
+  - { src: "paste.j2", dest: "paste" }
   notify: Restart Nginx
 
 - name: Enable virtual host
@@ -31,3 +32,4 @@
   with_items:
   - { src: "planet", dest: "planet" }
   - { src: "sync", dest: "sync" }
+  - { src: "paste", dest: "paste" }

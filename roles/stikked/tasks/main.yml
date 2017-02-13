@@ -1,0 +1,35 @@
+---
+- name: Get stikked source
+  git:
+    repo: https://github.com/claudehohl/Stikked.git
+    dest: /var/www/stikked
+
+- name: Generate key
+  shell: openssl rand -base64 16 > {{ stikked.password_file }}
+  args:
+    creates: "{{ stikked.password_file }}"
+
+- name: Get key
+  command: cat {{ stikked.password_file }}
+  register: stikked_password
+
+- name: Generate config
+  template:
+    src: stikked.php.j2
+    dest: /var/www/stikked/htdocs/application/config/stikked.php
+    mode: 0644
+
+- name: Change owner of stikked
+  file:
+    path: /var/www/stikked
+    owner: www-data
+    group: www-data
+    recurse: yes
+    state: directory
+
+- name: Add cron
+  cron:
+    name: "clean pastes"
+    minute: "*/30"
+    user: www-data
+    job: "curl --silent http://{{ nginx.paste_domain_name }}/cron/{{ stikked_password.stdout }}"
