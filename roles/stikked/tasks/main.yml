@@ -5,7 +5,7 @@
     dest: /var/www/stikked
 
 - name: Generate key
-  shell: openssl rand -base64 16 > {{ stikked.password_file }}
+  shell: openssl rand -base64 16 | sed -e 's/=//g;s/\///g' > {{ stikked.password_file }}
   args:
     creates: "{{ stikked.password_file }}"
 
