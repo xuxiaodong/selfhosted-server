@@ -10,6 +10,8 @@ shadowsocks:
   password_file: "/etc/shadowsocks-libev/shadowsocks-password.txt"
 
 nginx:
+  default_domain_name: "unixkoans.com"
+  www_domain_name: "www.unixkoans.com"
   rss_domain_name: "planet.unixkoans.com"
   sync_domain_name: "sync.unixkoans.com"
   paste_domain_name: "paste.unixkoans.com"
@@ -20,3 +22,6 @@ postgresql:
 stikked:
   user: toyland
   password_file: "/etc/stikked-password.txt"
+
+user:
+  email: "xxdlhy@gmail.com"
