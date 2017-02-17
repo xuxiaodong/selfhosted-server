@@ -1,0 +1,13 @@
+---
+- name: Install package
+  apt:
+    name: fail2ban
+    state: latest
+    default_release: jessie-backports
+    update_cache: yes
+
+- name: Enable service
+  systemd:
+    name: fail2ban
+    state: started
+    enabled: yes

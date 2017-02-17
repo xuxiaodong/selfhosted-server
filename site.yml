@@ -15,6 +15,7 @@
 
   roles:
   - common
+  - fail2ban
   - shadowsocks
   - nginx
   - postgresql
