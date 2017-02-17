@@ -13,6 +13,8 @@ selfhosted-server
 + ttrss：[Tiny Tiny RSS][8] 阅读器
 + syncthing：[Syncthing][9] P2P 持续同步
 + [stikked][10]：Paste 服务
++ [fail2ban][11]：根据日志中的恶意指征封禁 IP
++ [certbot][12]：部署 Let's Encrypt 证书
 
 ## 用法
 
@@ -28,3 +30,5 @@ selfhosted-server
 [8]: https://tt-rss.org/
 [9]: https://syncthing.net/
 [10]: https://github.com/claudehohl/Stikked
+[11]: https://www.fail2ban.org/
+[12]: https://certbot.eff.org/
