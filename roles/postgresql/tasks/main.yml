@@ -4,7 +4,6 @@
     name: "{{ item }}"
     state: latest
     default_release: jessie-backports
-    update_cache: yes
   with_items:
   - postgresql
   - libpq-dev

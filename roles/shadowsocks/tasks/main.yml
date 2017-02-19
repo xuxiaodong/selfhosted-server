@@ -4,7 +4,6 @@
     name: shadowsocks-libev
     state: latest
     default_release: jessie-backports
-    update_cache: yes
 
 - name: Generate Shadowsocks password
   shell: openssl rand -base64 48 > {{ shadowsocks.password_file }}

@@ -1,0 +1,25 @@
+server {
+    listen  80;
+    server_name {{ nginx.git_domain_name }};
+    return 301 https://$host$request_uri;
+}
+
+server {
+    listen 443 ssl http2;
+    server_name {{ nginx.git_domain_name }};
+
+    ssl_certificate /etc/letsencrypt/live/{{ nginx.git_domain_name }}/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/{{ nginx.git_domain_name }}/privkey.pem;
+    include /etc/nginx/ssl_params;
+
+    root /var/www/git;
+    index index.html index.htm index.php;
+
+    access_log /var/log/nginx/git_access.log;
+    error_log /var/log/nginx/git_error.log info;
+
+    location / {
+        index           index.html;
+    }
+
+}

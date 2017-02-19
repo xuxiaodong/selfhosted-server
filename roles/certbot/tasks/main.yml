@@ -4,7 +4,6 @@
     name: "{{ item }}"
     state: latest
     default_release: jessie-backports
-    update_cache: yes
   with_items:
   - certbot
   - python-certbot-nginx
@@ -18,10 +17,11 @@
 - name: Get cert
   shell: certbot certonly -c /etc/letsencrypt/cli.ini
 
+# See also: https://github.com/certbot/certbot/issues/4096
 - name: Add cron
   cron:
     name: "renew cert"
     minute: "52"
     hour: "0,12"
     user: root
-    job: "certbot renew -q --pre-hook \"systemctl stop nginx\" --post-hook \"systemctl start nginx\""
+    job: "certbot certonly -q -c /etc/letsencrypt/cli.ini"

@@ -1,0 +1,81 @@
+---
+- name: Install packages
+  apt:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+  - git
+  - git-daemon-sysvinit
+  - fcgiwrap
+  - libhttp-parser2.1
+
+- name: Add shell
+  lineinfile:
+    name: /etc/shells
+    line: "/usr/bin/git-shell"
+
+- name: Create group
+  group:
+    name: git
+
+- name: Create user
+  user:
+    name: git
+    group: git
+    shell: /usr/bin/git-shell
+
+- name: Set authorized key
+  authorized_key:
+    user: git
+    key: "https://github.com/{{ user.name }}.keys"
+
+- name: Create directory
+  file:
+    path: /var/www/git
+    state: directory
+    owner: git
+    group: git
+    mode: 0755
+
+- name: Generate config
+  template:
+    src: git-daemon.j2
+    dest: /etc/default/git-daemon
+    mode: 0644
+
+- name: Enable services
+  systemd:
+    name: "{{ item }}"
+    state: started
+    enabled: yes
+  with_items:
+  - git-daemon
+  - fcgiwrap
+
+- name: Copy stagit
+  copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+  with_items:
+  - { src: "libgit2-22_0.22.2-1_amd64.deb", dest: "/tmp/libgit2-22_0.22.2-1_amd64.deb" }
+  - { src: "stagit_0.5_amd64.deb", dest: "/tmp/stagit_0.5_amd64.deb" }
+  - { src: "stagitwrap.sh", dest: "/usr/local/bin/stagitwrap.sh" }
+
+- name: Install stagit
+  apt:
+    deb: "/tmp/{{ item }}"
+    force: yes
+  with_items:
+  - libgit2-22_0.22.2-1_amd64.deb
+  - stagit_0.5_amd64.deb
+
+- name: Run stagit
+  command: bash /usr/local/bin/stagitwrap.sh
+  args:
+    chdir: /var/www/git
+
+- name: Add cron
+  cron:
+    name: "generate static git page"
+    minute: "*/30"
+    job: "cd /var/www/git && bash /usr/local/bin/stagitwrap.sh"

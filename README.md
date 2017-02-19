@@ -6,6 +6,8 @@ selfhosted-server
 ## Role 说明
 
 + droplet：在 [DigitalOcean][3] 上创建 droplet
++ common：常用的包及系统调优
++ unattendedupgrades：Debian 系统自动升级
 + shadowsocks：架设 [Shadowsocks][4] 服务（Shadowsocks-libev）
 + [nginx][5]：架设 Web 服务
 + [postgresql][6]：架设数据库服务
@@ -15,6 +17,7 @@ selfhosted-server
 + [stikked][10]：Paste 服务
 + [fail2ban][11]：根据日志中的恶意指征封禁 IP
 + [certbot][12]：部署 Let's Encrypt 证书
++ [git][13]：Git 版本控制系统，外加 [stagit][14] 静态 Git 页面生成器
 
 ## 用法
 
@@ -32,3 +35,5 @@ selfhosted-server
 [10]: https://github.com/claudehohl/Stikked
 [11]: https://www.fail2ban.org/
 [12]: https://certbot.eff.org/
+[13]: https://git-scm.com/
+[14]: http://git.2f30.org/stagit/

@@ -12,9 +12,18 @@
     update_cache: yes
   with_items:
   - apt-transport-https
-  - git
   - htop
   - iotop
+
+- name: Disable service
+  systemd:
+    name: "{{ item }}"
+    state: stopped
+    enabled: no
+  with_items:
+  - atd
+  - nfs-common
+  - rpcbind
 
 - name: Enable TCP fast open
   sysctl:

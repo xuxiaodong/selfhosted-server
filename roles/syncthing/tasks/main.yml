@@ -13,7 +13,6 @@
   apt:
     name: syncthing
     state: latest
-    update_cache: yes
 
 - name: Enable service
   systemd:

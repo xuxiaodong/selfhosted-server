@@ -16,6 +16,7 @@
   roles:
   - common
   - unattendedupgrades
+  - git
   - fail2ban
   - shadowsocks
   - nginx

@@ -15,13 +15,16 @@ nginx:
   rss_domain_name: "planet.unixkoans.com"
   sync_domain_name: "sync.unixkoans.com"
   paste_domain_name: "paste.unixkoans.com"
+  git_domain_name: "git.unixkoans.com"
+  fonts_domain_name: "fonts.unixkoans.com"
 
 postgresql:
   password_file: "/etc/postgresql/postgresql-password.txt"
 
 stikked:
-  user: toyland
+  user: "toyland"
   password_file: "/etc/stikked-password.txt"
 
 user:
+  name: "xuxiaodong"
   email: "xxdlhy@gmail.com"

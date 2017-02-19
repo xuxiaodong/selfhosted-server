@@ -4,7 +4,6 @@
     name: nginx-extras
     state: latest
     default_release: jessie-backports
-    update_cache: yes
 
 - name: Generate nginx config
   template:
@@ -25,6 +24,7 @@
   - { src: "planet.j2", dest: "planet" }
   - { src: "sync.j2", dest: "sync" }
   - { src: "paste.j2", dest: "paste" }
+  - { src: "git.j2", dest: "git" }
   notify: Restart Nginx
 
 - name: Enable virtual host
@@ -36,3 +36,4 @@
   - { src: "planet", dest: "planet" }
   - { src: "sync", dest: "sync" }
   - { src: "paste", dest: "paste" }
+  - { src: "git", dest: "git" }
