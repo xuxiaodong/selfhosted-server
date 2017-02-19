@@ -12,7 +12,7 @@ server {
     ssl_certificate_key /etc/letsencrypt/live/{{ nginx.git_domain_name }}/privkey.pem;
     include /etc/nginx/ssl_params;
 
-    root /var/www/git;
+    root /var/www/git/html;
     index index.html index.htm index.php;
 
     access_log /var/log/nginx/git_access.log;

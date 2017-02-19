@@ -12,7 +12,7 @@
 # - mkdir -p htmldir && cd htmldir
 # - sh example.sh
 
-reposdir="/var/www/git"
+reposdir="/var/www/git/repo"
 curdir=$(pwd)
 
 # copy asset
@@ -25,12 +25,12 @@ find . -maxdepth 1 -type d | grep -v "^.$" | sort | xargs stagit-index > "${curd
 # make files per repo.
 cd "${reposdir}"
 find . -maxdepth 1 -type d | grep -v "^.$" | sort | while read -r dir; do
-	d=$(basename "${dir}")
+	d=$(basename "${dir}" .git)
 	printf "%s... " "${d}"
 
 	mkdir -p "${curdir}/${d}"
 	cd "${curdir}/${d}"
-	stagit -c ".cache" "${reposdir}/${d}"
+	stagit -c ".cache" "${reposdir}/${d}.git"
 
 	# symlinks
 	ln -sf log.html index.html

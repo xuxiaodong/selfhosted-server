@@ -1,0 +1,5 @@
+---
+- name: Restart gitdaemon
+  service:
+    name: git-daemon
+    state: restarted

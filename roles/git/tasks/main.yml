@@ -31,17 +31,22 @@
 
 - name: Create directory
   file:
-    path: /var/www/git
+    path: "/var/www/git/{{ item }}"
     state: directory
     owner: git
     group: git
     mode: 0755
+    recurse: yes
+  with_items:
+  - repo
+  - html
 
 - name: Generate config
   template:
     src: git-daemon.j2
     dest: /etc/default/git-daemon
     mode: 0644
+  notify: Restart gitdaemon
 
 - name: Enable services
   systemd:
@@ -72,10 +77,10 @@
 - name: Run stagit
   command: bash /usr/local/bin/stagitwrap.sh
   args:
-    chdir: /var/www/git
+    chdir: /var/www/git/html
 
 - name: Add cron
   cron:
     name: "generate static git page"
     minute: "*/30"
-    job: "cd /var/www/git && bash /usr/local/bin/stagitwrap.sh"
+    job: "cd /var/www/git/html && bash /usr/local/bin/stagitwrap.sh"
