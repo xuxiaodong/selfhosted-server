@@ -18,6 +18,7 @@ selfhosted-server
 + [fail2ban][11]：根据日志中的恶意指征封禁 IP
 + [certbot][12]：部署 Let's Encrypt 证书
 + [git][13]：Git 版本控制系统，外加 [stagit][14] 静态 Git 页面生成器
++ [obname][15]：备份工具
 
 ## 用法
 
@@ -37,3 +38,4 @@ selfhosted-server
 [12]: https://certbot.eff.org/
 [13]: https://git-scm.com/
 [14]: http://git.2f30.org/stagit/
+[15]: http://obnam.org/

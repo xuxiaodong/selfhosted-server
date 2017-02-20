@@ -1,0 +1,24 @@
+---
+- name: Install package
+  apt:
+    name: obnam
+    state: latest
+
+- name: Generate config
+  template:
+    src: obnam.conf.j2
+    dest: /etc/obnam.conf
+    mode: 0644
+
+- name: Add cron
+  cron:
+    name: "backup data"
+    minute: "30"
+    hour: "0"
+    job: "obnam backup"
+
+- name: Ensure directory exist
+  file:
+    path: /root/Sync/backups/gitrepos
+    state: directory
+    recurse: yes

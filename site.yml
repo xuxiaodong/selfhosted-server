@@ -18,6 +18,7 @@
   - unattendedupgrades
   - git
   - fail2ban
+  - obnam
   - shadowsocks
   - nginx
   - postgresql
