@@ -65,6 +65,7 @@
   - { src: "libgit2-22_0.22.2-1_amd64.deb", dest: "/tmp/libgit2-22_0.22.2-1_amd64.deb" }
   - { src: "stagit_0.5_amd64.deb", dest: "/tmp/stagit_0.5_amd64.deb" }
   - { src: "stagitwrap.sh", dest: "/usr/local/bin/stagitwrap.sh" }
+  - { src: "create-repo.sh", dest: "/usr/local/bin/create-repo.sh" }
 
 - name: Install stagit
   apt:
