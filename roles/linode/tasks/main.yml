@@ -1,0 +1,32 @@
+---
+- name: Set Linode access token
+  set_fact:
+    linode_api_token: "{{ linode_api_token_entry }}"
+
+- name: Get SSH key
+  command: cat ~/.ssh/id_rsa.pub
+  register: linode_ssh_pub_key
+
+- name: Create server
+  linode:
+    api_key: "{{ linode_api_token }}"
+    name: "{{ linode.server_name }}"
+    linode_id: "{{ linode.id }}"
+    plan: "{{ linode.plan_id }}"
+    datacenter: "{{ linode.datacenter_id }}"
+    distribution: "{{ linode.distro_id }}"
+    ssh_pub_key: "{{ linode_ssh_pub_key.stdout }}"
+    wait: yes
+  register: linode_server
+
+- name: Wait until the server has  finished start
+  wait_for:
+    host: "{{ linode_server.instance.ipv4 }}"
+    port: 22
+    search_regex: OpenSSH
+    timeout: 600
+
+- name: Create host group
+  add_host:
+    name: "{{ linode_server.instance.ipv4 }}"
+    groups: linode

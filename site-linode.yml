@@ -1,0 +1,18 @@
+---
+- hosts: local
+  become: True
+
+  vars_prompt:
+  - name: linode_api_token_entry
+    prompt: "Your Linode API access token"
+    private: no
+
+  roles:
+  - linode
+
+- hosts: linode
+  become: True
+
+  roles:
+  - common
+  - unattendedupgrades
