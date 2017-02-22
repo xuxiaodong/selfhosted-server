@@ -3,7 +3,7 @@ shadowsocks:
   server_port: "8530"
   local_port: "1080"
   timeout: "600"
-  encryption_method: "aes-256-cfb"
+  encryption_method: "chacha20-ietf"
   tcp_fast_open: "true"
   location: "/etc/shadowsocks-libev"
   password_file: "/etc/shadowsocks-libev/shadowsocks-password.txt"
