@@ -19,4 +19,6 @@
     src: config.json.j2
     dest: "{{ shadowsocks.location }}/config.json"
     mode: 0640
+    owner: nobody
+    group: nogroup
   notify: Restart shadowsocks-libev

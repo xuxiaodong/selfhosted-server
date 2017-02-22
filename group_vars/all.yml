@@ -5,7 +5,6 @@ shadowsocks:
   timeout: "600"
   encryption_method: "aes-256-cfb"
   tcp_fast_open: "true"
-  enable_ota: "false"
   location: "/etc/shadowsocks-libev"
   password_file: "/etc/shadowsocks-libev/shadowsocks-password.txt"
 
