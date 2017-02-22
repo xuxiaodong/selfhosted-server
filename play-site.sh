@@ -9,7 +9,7 @@ echo
 echo -n "Which provider are you using?
   1. DigitalOcean
   2. Linode
-: "
+Your choose: "
 
 read reply
 

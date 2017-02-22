@@ -16,3 +16,4 @@
   roles:
   - common
   - unattendedupgrades
+  - fail2ban
