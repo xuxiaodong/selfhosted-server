@@ -16,7 +16,8 @@
   roles:
   - common
   - unattendedupgrades
-  - git
+  - git-client
+  - git-server
   - fail2ban
   - obnam
   - shadowsocks

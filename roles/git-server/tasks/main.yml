@@ -4,7 +4,6 @@
     name: "{{ item }}"
     state: latest
   with_items:
-  - git
   - git-daemon-sysvinit
   - fcgiwrap
   - libhttp-parser2.1
