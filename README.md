@@ -6,6 +6,7 @@ selfhosted-server
 ## Role 说明
 
 + droplet：在 [DigitalOcean][3] 上创建 droplet
++ linode：在 [Linode][16] 上创建服务器
 + common：常用的包及系统调优
 + unattendedupgrades：Debian 系统自动升级
 + shadowsocks：架设 [Shadowsocks][4] 服务（Shadowsocks-libev）
@@ -22,7 +23,7 @@ selfhosted-server
 
 ## 用法
 
-    ansible-playbook site.yml
+    ./play-site.sh
 
 [1]: https://www.ansible.com/
 [2]: https://www.debian.org/
@@ -39,3 +40,4 @@ selfhosted-server
 [13]: https://git-scm.com/
 [14]: http://git.2f30.org/stagit/
 [15]: http://obnam.org/
+[16]: https://www.linode.com/?r=28bf53dae49d2c55dd671136769c0b7526db5891

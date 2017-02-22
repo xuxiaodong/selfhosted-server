@@ -10,8 +10,8 @@ droplet:
   image_id: debian-8-x64
 
 linode:
-  id: 2761863
-  datacenter_id: 7
+  id: 2763580
+  datacenter_id: 11
   plan_id: 1
   distro_id: 140
   server_name: toynode
