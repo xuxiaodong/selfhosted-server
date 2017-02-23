@@ -24,6 +24,10 @@ stikked:
   user: "toyland"
   password_file: "/etc/stikked-password.txt"
 
+kcptun:
+  version: 20170221
+  checksum: "b5654a3c9a1dfeacf136ea408a5f2a7607efbefe"
+
 user:
   name: "xuxiaodong"
   email: "xxdlhy@gmail.com"

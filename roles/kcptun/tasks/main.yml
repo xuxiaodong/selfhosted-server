@@ -1,0 +1,40 @@
+---
+- name: Download package
+  get_url:
+    url: "https://github.com/xtaci/kcptun/releases/download/v{{ kcptun.version }}/kcptun-linux-amd64-{{ kcptun.version }}.tar.gz"
+    dest: "/tmp/kcptun-linux-amd64-{{ kcptun.version }}.tar.gz"
+    checksum: "sha1:{{ kcptun.checksum }}"
+
+- name: Extract tarball
+  unarchive:
+    src: "/tmp/kcptun-linux-amd64-{{ kcptun.version }}.tar.gz"
+    dest: /usr/local/bin
+    creates: "/etc/kcptun/version-{{ kcptun.version }}"
+    remote_src: yes
+
+- name: Create directory
+  file:
+    path: /etc/kcptun
+    state: directory
+
+- name: Create version file
+  file:
+    path: "/etc/kcptun/version-{{ kcptun.version }}"
+    state: touch
+
+- name: Generate config
+  template:
+    src: config.json.j2
+    dest: /etc/kcptun/config.json
+  notify: Restart kcptun
+
+- name: Upload systemd unit file
+  copy:
+    src: kcptun.service
+    dest: /etc/systemd/system/kcptun.service
+
+- name: Enable service
+  systemd:
+    name: kcptun
+    state: started
+    enabled: yes

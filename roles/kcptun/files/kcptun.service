@@ -1,0 +1,10 @@
+[Unit]
+Description=A Secure Tunnel Based On KCP with N:M Multiplexing
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/server_linux_amd64 -c /etc/kcptun/config.json
+
+[Install]
+WantedBy=multi-user.target
