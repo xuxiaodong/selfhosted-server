@@ -1,0 +1,15 @@
+---
+- name: Add apt key
+  apt_key:
+    url: "https://pkg.jenkins.io/debian/jenkins.io.key"
+    state: present
+
+- name: Add apt repo
+  apt_repository:
+    repo: deb http://pkg.jenkins.io/debian-stable binary/
+    state: present
+
+- name: Install package
+  apt:
+    name: jenkins
+    state: present

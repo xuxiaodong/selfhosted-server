@@ -2,8 +2,9 @@
 - name: Install nginx
   apt:
     name: nginx-extras
-    state: latest
+    state: present
     default_release: jessie-backports
+    force: yes
 
 - name: Generate nginx config
   template:
@@ -25,6 +26,7 @@
   - { src: "sync.j2", dest: "sync" }
   - { src: "paste.j2", dest: "paste" }
   - { src: "git.j2", dest: "git" }
+  - { src: "ci.j2", dest: "ci" }
   notify: Restart Nginx
 
 - name: Enable virtual host
@@ -37,3 +39,4 @@
   - { src: "sync", dest: "sync" }
   - { src: "paste", dest: "paste" }
   - { src: "git", dest: "git" }
+  - { src: "ci", dest: "ci" }

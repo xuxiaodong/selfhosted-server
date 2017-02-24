@@ -20,3 +20,6 @@
   - git-client
   - shadowsocks
   - kcptun
+  - php
+  - nginx
+  - jenkins
