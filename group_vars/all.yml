@@ -18,6 +18,7 @@ nginx:
   fonts_domain_name: "fonts.unixkoans.com"
   ci_domain_name: "ci.unixkoans.com"
   status_domain_name: "status.unixkoans.com"
+  dl_domain_name: "dl.unixkoans.com"
 
 postgresql:
   password_file: "/etc/postgresql/postgresql-password.txt"

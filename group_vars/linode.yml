@@ -1,3 +1,4 @@
 cert:
   ci_domain_name: "ci.unixkoans.com"
   status_domain_name: "status.unixkoans.com"
+  dl_domain_name: "dl.unixkoans.com"
