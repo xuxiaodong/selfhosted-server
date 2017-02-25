@@ -1,0 +1,29 @@
+---
+- name: Install requirements
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+  - build-essential
+  - fakeroot
+  - devscripts
+  - debhelper
+  - lintian
+  - debootstrap
+  - pbuilder
+
+- name: Generate config
+  template:
+    src: pbuilderrc.j2
+    dest: /var/lib/jenkins/.pbuilderrc
+
+- name: Create base tarball
+  command: pbuilder create
+  args:
+    creates: /var/cache/pbuilder/base.tgz
+
+- name: Add sudoer
+  lineinfile:
+    dest: /etc/sudoers
+    regexp: '^jenkins'
+    line: 'jenkins ALL=(ALL) NOPASSWD: ALL'
