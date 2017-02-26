@@ -1,0 +1,25 @@
+---
+- name: Install packages
+  apt:
+    name: "{{ item }}"
+    default_release: jessie-backports
+    state: present
+  with_items:
+  - lsyncd
+
+- name: Ensure /etc/lsyncd directory exist
+  file:
+    path: /etc/lsyncd
+    state: directory
+
+- name: Generate config
+  template:
+    src: lsyncd.conf.lua.j2
+    dest: /etc/lsyncd/lsyncd.conf.lua
+  notify: Restart lsyncd
+
+- name: Enable service
+  systemd:
+    name: lsyncd
+    state: started
+    enabled: yes

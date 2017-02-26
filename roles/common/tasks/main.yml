@@ -7,13 +7,14 @@
 - name: Install common packages
   apt:
     name: "{{ item }}"
-    state: latest
+    state: present
     default_release: jessie-backports
     update_cache: yes
   with_items:
   - apt-transport-https
   - htop
   - iotop
+  - rsync
 
 - name: Disable service
   systemd:

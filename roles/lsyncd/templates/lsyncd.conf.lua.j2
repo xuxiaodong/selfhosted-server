@@ -1,0 +1,17 @@
+settings {
+    logfile = "/var/log/lsyncd.log",
+    statusFile = "/var/log/lsyncd-status.log",
+    statusInterval = 20
+}
+
+sync {
+    default.rsyncssh,
+    source = "/var/www/linuxtoy.org",
+    host = "{{ lsyncd.toysite }}",
+    targetdir = "/home/www/toy_source/output",
+    delete = "running",
+    exclude = { ".tmp" },
+    rsync  =  {
+        compress  =  false
+    }
+}
