@@ -24,4 +24,5 @@
   - nginx
   - jenkins
   - certbot
+  - debian-packaging
   - pelican

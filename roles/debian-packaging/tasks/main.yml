@@ -27,3 +27,11 @@
     dest: /etc/sudoers
     regexp: '^jenkins'
     line: 'jenkins ALL=(ALL) NOPASSWD: ALL'
+
+- name: Add cron
+  cron:
+    name: "Update pbuilder"
+    minute: "30"
+    hour: "1"
+    user: root
+    job: "pbuilder update"
