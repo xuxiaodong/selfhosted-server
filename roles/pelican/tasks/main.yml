@@ -1,0 +1,5 @@
+---
+- name: Install package
+  apt:
+    name: pelican
+    state: present
