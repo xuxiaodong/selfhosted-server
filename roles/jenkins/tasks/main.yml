@@ -13,3 +13,9 @@
   apt:
     name: jenkins
     state: present
+
+- name: Add sudoer
+  lineinfile:
+    dest: /etc/sudoers
+    regexp: '^jenkins'
+    line: 'jenkins ALL=(ALL) NOPASSWD: ALL'

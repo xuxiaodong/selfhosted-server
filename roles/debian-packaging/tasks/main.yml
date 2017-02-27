@@ -22,12 +22,6 @@
   args:
     creates: /var/cache/pbuilder/base.tgz
 
-- name: Add sudoer
-  lineinfile:
-    dest: /etc/sudoers
-    regexp: '^jenkins'
-    line: 'jenkins ALL=(ALL) NOPASSWD: ALL'
-
 - name: Add cron
   cron:
     name: "Update pbuilder"
