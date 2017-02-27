@@ -24,6 +24,12 @@
   args:
     creates: /var/cache/pbuilder/base.tgz
 
+- name: Change owner
+  file:
+    path: /var/cache/pbuilder/result
+    owner: jenkins
+    group: jenkins
+
 - name: Add cron
   cron:
     name: "Update pbuilder"
