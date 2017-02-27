@@ -1,0 +1,16 @@
+[DEFAULT]
+archive_style = flat
+archivedir = /var/www/debian
+architectures = all, amd64
+verify_sigs = 0
+mail_to = {{ user.email }}
+generate_release = 1
+release_origin = unixkoans
+release_codename = unstable
+
+[stable]
+release_codename = jessie
+
+[unstable]
+release_codename = sid
+release_label = Personal Debian Packages

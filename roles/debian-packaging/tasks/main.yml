@@ -11,6 +11,8 @@
   - lintian
   - debootstrap
   - pbuilder
+  - dput
+  - mini-dinstall
 
 - name: Generate config
   template:
@@ -29,3 +31,33 @@
     hour: "1"
     user: root
     job: "pbuilder update"
+
+- name: Add environment variable
+  lineinfile:
+    dest: /var/lib/jenkins/.bashrc
+    regexp: '^export DEBEMAIL'
+    line: 'export DEBEMAIL={{ user.email }}'
+    create: yes
+
+- name: Ensure directory exist
+  file:
+    path: /var/www/debian
+    state: directory
+    owner: jenkins
+    group: jenkins
+
+- name: Generate config
+  template:
+    src: "{{ item.src }}"
+    dest: "/var/lib/jenkins/.{{ item.dest }}"
+  with_items:
+  - { src: "dput.cf.j2", dest: "dput.cf" }
+  - { src: "mini-dinstall.conf.j2", dest: "mini-dinstall.conf" }
+
+- name: Run mini-dinstall
+  command: mini-dinstall -q -c /var/lib/jenkins/.mini-dinstall.conf
+  args:
+    creates: /var/www/debian/mini-dinstall/mini-dinstall.lock
+  become: True
+  become_method: su
+  become_user: jenkins

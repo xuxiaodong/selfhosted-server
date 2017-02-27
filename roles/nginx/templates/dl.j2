@@ -12,7 +12,7 @@ server {
     ssl_certificate_key /etc/letsencrypt/live/{{ nginx.dl_domain_name }}/privkey.pem;
     include /etc/nginx/ssl_params;
 
-    root /var/cache/pbuilder/result;
+    root /var/www/debian;
     index index.html index.htm index.php;
 
     access_log /var/log/nginx/dl_access.log;
@@ -21,6 +21,11 @@ server {
     location / {
         autoindex on;
         autoindex_localtime on;
+    }
+
+    location /mini-dinstall {
+        allow 127.0.0.1;
+        deny all;
     }
 
 }
