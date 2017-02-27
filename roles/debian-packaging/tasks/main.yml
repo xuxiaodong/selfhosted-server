@@ -2,15 +2,18 @@
 - name: Install requirements
   apt:
     name: "{{ item }}"
+    default_release: jessie-backports
     state: present
   with_items:
   - build-essential
   - fakeroot
   - devscripts
   - debhelper
+  - dh-make
   - lintian
   - debootstrap
   - pbuilder
+  - git-buildpackage
   - dput
   - mini-dinstall
 
@@ -59,6 +62,7 @@
   with_items:
   - { src: "dput.cf.j2", dest: "dput.cf" }
   - { src: "mini-dinstall.conf.j2", dest: "mini-dinstall.conf" }
+  - { src: "gbp.conf.j2", dest: "gbp.conf" }
 
 - name: Run mini-dinstall
   command: mini-dinstall -q -c /var/lib/jenkins/.mini-dinstall.conf
