@@ -19,3 +19,15 @@
     dest: /etc/sudoers
     regexp: '^jenkins'
     line: 'jenkins ALL=(ALL) NOPASSWD: ALL'
+
+- name: Git config
+  git_config:
+    name: "user.{{ item.key }}"
+    scope: global
+    value: "{{ item.value }}"
+  with_items:
+  - { key: "name", value: "{{ user.full_name }}" }
+  - { key: "email", value: "{{ user.email }}" }
+  become: True
+  become_method: su
+  become_user: jenkins
