@@ -14,6 +14,7 @@
   - debootstrap
   - pbuilder
   - git-buildpackage
+  - git-dpm
   - dput
   - mini-dinstall
 
@@ -59,6 +60,8 @@
   template:
     src: "{{ item.src }}"
     dest: "/var/lib/jenkins/.{{ item.dest }}"
+    owner: jenkins
+    group: jenkins
   with_items:
   - { src: "dput.cf.j2", dest: "dput.cf" }
   - { src: "mini-dinstall.conf.j2", dest: "mini-dinstall.conf" }
