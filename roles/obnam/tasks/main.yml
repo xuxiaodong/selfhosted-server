@@ -4,21 +4,39 @@
     name: obnam
     state: latest
 
+- name: Ensure directory exist
+  file:
+    path: /etc/obnam
+    state: directory
+
 - name: Generate config
   template:
-    src: obnam.conf.j2
-    dest: /etc/obnam.conf
+    src: "{{ item.src }}"
+    dest: "/etc/obnam/{{ item.dest }}"
     mode: 0644
+  with_items:
+  - { src: "gitrepo.conf.j2", dest: "gitrepo.conf" }
+  - { src: "database.conf.j2", dest: "database.conf" }
 
-- name: Add cron
+- name: Add cron for git repo
   cron:
-    name: "backup data"
+    name: "backup git repo"
     minute: "30"
     hour: "0"
-    job: "obnam backup"
+    job: "obnam backup --config /etc/obnam/gitrepo.conf"
+
+- name: Add cron for database
+  cron:
+    name: "backup database"
+    minute: "50"
+    hour: "0"
+    job: "obnam backup --config /etc/obnam/database.conf"
 
 - name: Ensure directory exist
   file:
-    path: /root/Sync/backups/gitrepos
+    path: "/root/Sync/backups/{{ item }}"
     state: directory
     recurse: yes
+  with_items:
+  - gitrepos
+  - postgresql

@@ -41,3 +41,24 @@
     dest: /etc/postgresql/9.6/main/postgresql.conf
     mode: 0644
   notify: Restart postgresql
+
+- name: Add pg backup config
+  template:
+    src: pg_backup.conf.j2
+    dest: /etc/postgresql/pg_backup.conf
+    owner: postgres
+    group: postgres
+
+- name: Add pg backup script
+  copy:
+    src: pg_backup.sh
+    dest: /usr/local/bin/pg_backup.sh
+    mode: 0755
+
+- name: Add cron
+  cron:
+    name: "backup postgresql"
+    minute: "20"
+    hour: "1"
+    user: postgres
+    job: "pg_backup.sh -c /etc/postgresql/pg_backup.conf"
