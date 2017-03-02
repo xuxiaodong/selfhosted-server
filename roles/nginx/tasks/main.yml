@@ -28,6 +28,7 @@
   - { src: "git.j2", dest: "git" }
   - { src: "ci.j2", dest: "ci" }
   - { src: "dl.j2", dest: "dl" }
+  - { src: "status.j2", dest: "status" }
   notify: Restart Nginx
 
 - name: Enable virtual host
@@ -42,3 +43,4 @@
   - { src: "git", dest: "git" }
   - { src: "ci", dest: "ci" }
   - { src: "dl", dest: "dl" }
+  - { src: "status", dest: "status" }

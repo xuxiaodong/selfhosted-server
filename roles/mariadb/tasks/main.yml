@@ -32,6 +32,16 @@
 
 - name: Install package
   apt:
-    name: mariadb-server-10.0
+    name: "{{ item }}"
     state: present
     default_release: jessie-backports
+  with_items:
+  - mariadb-server-10.0
+  - python-mysqldb
+
+- name: Create database for cachet
+  mysql_db:
+    name: cachet
+    state: present
+    login_user: root
+    login_password: "{{ mariadb_password.stdout }}"

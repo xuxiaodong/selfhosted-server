@@ -1,0 +1,58 @@
+---
+- name: Get sources
+  git:
+    repo: https://github.com/cachethq/Cachet.git
+    dest: /var/www/cachet
+    update: no
+    version: v2.3.10
+
+- name: Get password
+  command: cat {{ mariadb.password_file }}
+  register: mariadb_password
+
+- name: Change owner of cachet
+  file:
+    path: /var/www/cachet
+    owner: www-data
+    group: www-data
+    recurse: yes
+    state: directory
+
+- name: Generate config
+  template:
+    src: env.j2
+    dest: /var/www/cachet/.env
+    owner: www-data
+    group: www-data
+    mode: 0644
+
+- name: Get Composer
+  get_url:
+    url: https://getcomposer.org/installer
+    dest: /tmp/composer-installer
+
+- name: Install Composer
+  command: php /tmp/composer-installer --install-dir=/usr/local/bin --filename=composer
+
+- name: Run Composer
+  command: composer install --no-dev -o
+  args:
+    chdir: /var/www/cachet
+  become: True
+  become_user: www-data
+
+- name: Set application key
+  shell: php artisan key:generate && touch .key_created
+  args:
+    chdir: /var/www/cachet
+    creates: /var/www/cachet/.key_created
+  become: True
+  become_user: www-data
+
+- name: Install application
+  shell: php artisan app:install && touch .app_installed
+  args:
+    chdir: /var/www/cachet
+    creates: /var/www/cachet/.app_installed
+  become: True
+  become_user: www-data

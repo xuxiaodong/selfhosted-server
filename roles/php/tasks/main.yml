@@ -2,7 +2,7 @@
 - name: Install php
   apt:
     name: "{{ item }}"
-    state: latest
+    state: present
     default_release: jessie-backports
   with_items:
   - php5-fpm
@@ -10,6 +10,9 @@
   - php5-curl
   - php5-gd
   - php5-pgsql
+  - php5-mysql
+  - php5-mcrypt
+  - php5-apcu
 
 - name: Generate php fpm config
   template:
