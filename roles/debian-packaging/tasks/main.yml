@@ -17,6 +17,7 @@
   - git-dpm
   - dput
   - mini-dinstall
+  - debconf-utils
 
 - name: Generate config
   template:
