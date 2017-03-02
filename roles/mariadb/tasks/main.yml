@@ -1,0 +1,37 @@
+---
+- name: Ensure directory exist
+  file:
+    path: /etc/mysql
+    state: directory
+
+- name: Generate password
+  shell: openssl rand -base64 16 > {{ mariadb.password_file }}
+  args:
+    creates: "{{ mariadb.password_file }}"
+
+- name: Get password
+  command: cat {{ mariadb.password_file }}
+  register: mariadb_password
+
+- name: Configure password
+  debconf:
+    name: mariadb-server-10.0
+    question: "{{ item }}"
+    vtype: password
+    value: "{{ mariadb_password.stdout }}"
+  with_items:
+  - mysql-server/root_password
+  - mysql-server/root_password_again
+
+- name: Configure migration
+  debconf:
+    name: mariadb-server-10.0
+    question: mysql-server/oneway_migration
+    vtype: boolean
+    value: true
+
+- name: Install package
+  apt:
+    name: mariadb-server-10.0
+    state: present
+    default_release: jessie-backports

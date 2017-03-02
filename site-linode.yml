@@ -27,3 +27,4 @@
   - debian-packaging
   - pelican
   - lsyncd
+  - mariadb

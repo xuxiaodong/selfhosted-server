@@ -23,6 +23,9 @@ nginx:
 postgresql:
   password_file: "/etc/postgresql/postgresql-password.txt"
 
+mariadb:
+  password_file: "/etc/mysql/mariadb-password.txt"
+
 stikked:
   user: "toyland"
   password_file: "/etc/stikked-password.txt"
