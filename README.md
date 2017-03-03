@@ -1,7 +1,7 @@
 selfhosted-server
 -----------------
 
-利用 [Ansible][1] 快速自架各种服务器，包括 Shadowsocks、NGINX、PostgreSQL、Tiny Tiny RSS、Syncthing、Stikked、Git、Jenkins 等等。目前，支持 DigitalOcean 和 Linode 两家 VPS，采用 [Debian GNU/Linux][2] 8.7 64 位版本系统。
+利用 [Ansible][1] 快速自架各种服务器，包括 Shadowsocks、NGINX、PostgreSQL、Tiny Tiny RSS、Syncthing、Stikked、Git、Jenkins 等等。目前，支持 DigitalOcean、Linode、Vultr 等 VPS，采用 [Debian GNU/Linux][2] 8.7 64 位版本系统。
 
 ## Role 说明
 
