@@ -18,14 +18,6 @@
     recurse: yes
     state: directory
 
-- name: Generate config
-  template:
-    src: env.j2
-    dest: /var/www/cachet/.env
-    owner: www-data
-    group: www-data
-    mode: 0644
-
 - name: Get Composer
   get_url:
     url: https://getcomposer.org/installer
@@ -42,12 +34,27 @@
   become_user: www-data
 
 - name: Set application key
-  shell: php artisan key:generate && touch .key_created
+  shell: php artisan key:generate --show > .key_created
   args:
     chdir: /var/www/cachet
     creates: /var/www/cachet/.key_created
   become: True
   become_user: www-data
+
+- name: Get application key
+  command: cat .key_created
+  args:
+    chdir: /var/www/cachet
+  register: cachet_key
+
+- name: Generate config
+  template:
+    src: env.j2
+    dest: /var/www/cachet/.env
+    owner: www-data
+    group: www-data
+    mode: 0644
+    backup: yes
 
 - name: Install application
   shell: php artisan app:install && touch .app_installed
