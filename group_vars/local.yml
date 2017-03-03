@@ -1,10 +1,8 @@
 ---
-do:
+droplet:
   id: 39153100
   server_name: toyland
   ssh_key_name: toyland
-
-droplet:
   size_id: 512mb
   region_id: sgp1
   image_id: debian-8-x64

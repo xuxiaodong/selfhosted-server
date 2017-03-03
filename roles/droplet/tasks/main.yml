@@ -11,7 +11,7 @@
   digital_ocean:
     state: present
     command: ssh
-    name: "{{ do.ssh_key_name }}"
+    name: "{{ droplet.ssh_key_name }}"
     ssh_pub_key: "{{ do_ssh_pub_key.stdout }}"
     api_token: "{{ do_api_token }}"
   register: do_ssh_key
@@ -23,8 +23,8 @@
   digital_ocean:
     state: present
     command: droplet
-    id: "{{ do.id }}"
-    name: "{{ do.server_name }}"
+    id: "{{ droplet.id }}"
+    name: "{{ droplet.server_name }}"
     ssh_key_ids: "{{ do_ssh_key.ssh_key.id }}"
     size_id: "{{ droplet.size_id }}"
     region_id: "{{ droplet.region_id }}"
