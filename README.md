@@ -9,6 +9,7 @@ selfhosted-server
 
 + droplet：在 [DigitalOcean][3] 上创建 droplet
 + linode：在 [Linode][16] 上创建服务器实例
++ vultr：在 [Vultr][29] 上创建服务器实例
 
 ### Debian
 
@@ -49,6 +50,12 @@ selfhosted-server
 
     ./play-site.sh
 
+## 许可
+
+The MIT License (MIT)
+
+Copyright © 2017 Xiaodong Xu, https://linuxtoy.org <xxdlhy [at] gmail [dot] com>
+
 [1]: https://www.ansible.com/
 [2]: https://www.debian.org/
 [3]: https://m.do.co/c/7758457f61ad
@@ -77,3 +84,4 @@ selfhosted-server
 [26]: https://mariadb.com/
 [27]: https://cachethq.io/
 [28]: https://status.unixkoans.com/
+[29]: http://www.vultr.com/?ref=7123175
