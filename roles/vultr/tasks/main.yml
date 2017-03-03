@@ -1,0 +1,31 @@
+---
+- name: Set Vultr access token
+  set_fact:
+    vultr_api_token: "{{ vultr_api_token_entry }}"
+
+- name: Create server
+  vultr:
+    command: server
+    api_key: "{{ vultr_api_token }}"
+    state: present
+    label: "{{ vultr.server_name }}"
+    DCID: "{{ vultr.dc_id }}"
+    VPSPLANID: "{{ vultr.plan_id }}"
+    OSID: "{{ vultr.distro_id }}"
+    SSHKEYID: "{{ vultr.ssh_key_id }}"
+    hostname: "{{ vultr.server_name }}"
+    unique_label: yes
+    wait: yes
+  register: vultr_server
+
+- name: Wait until the server has finished start
+  wait_for:
+    host: "{{ vultr_server.server.main_ip }}"
+    port: 22
+    search_regex: OpenSSH
+    timeout: 600
+
+- name: Create host group
+  add_host:
+    name: "{{ vultr_server.server.main_ip }}"
+    groups: vultr

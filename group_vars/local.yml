@@ -15,3 +15,10 @@ linode:
   plan_id: 1
   distro_id: 140
   server_name: toynode
+
+vultr:
+  dc_id: 25
+  plan_id: 29
+  distro_id: 193
+  ssh_key_id: 58b917dc1b55b
+  server_name: toydroid

@@ -1,0 +1,21 @@
+---
+- hosts: local
+  become: True
+
+  vars_prompt:
+  - name: vultr_api_token_entry
+    prompt: "Your Vultr API access token"
+    private: no
+
+  roles:
+  - vultr
+
+- hosts: vultr
+  become: True
+
+  roles:
+  - common
+  - unattendedupgrades
+  - fail2ban
+  - git-client
+  - shadowsocks
