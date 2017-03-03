@@ -1,12 +1,7 @@
 ---
 - name: Add backports repository
   apt_repository:
-    repo: "deb http://ftp.sg.debian.org/debian jessie-backports main"
-    state: present
-
-- name: Add personal repository
-  apt_repository:
-    repo: "deb https://dl.unixkoans.com/ unstable/"
+    repo: "deb http://ftp.debian.org/debian jessie-backports main"
     state: present
 
 - name: Install common packages
@@ -21,11 +16,17 @@
   - iotop
   - rsync
 
+- name: Add personal repository
+  apt_repository:
+    repo: "deb https://dl.unixkoans.com/ unstable/"
+    state: present
+
 - name: Disable service
   systemd:
     name: "{{ item }}"
     state: stopped
     enabled: no
+  ignore_errors: yes
   with_items:
   - atd
   - nfs-common

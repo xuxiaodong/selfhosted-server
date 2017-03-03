@@ -1,0 +1,3 @@
+[submodule "library/vultr"]
+	path = library/vultr
+	url = https://github.com/tundrax/ansible-vultr.git
