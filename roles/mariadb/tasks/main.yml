@@ -39,6 +39,18 @@
   - mariadb-server-10.0
   - python-mysqldb
 
+- name: Remove anonymous users
+  mysql_user:
+    name: ""
+    state: absent
+    login_password: "{{ mariadb_password.stdout }}"
+
+- name: Remove test database
+  mysql_db:
+    name: test
+    state: absent
+    login_password: "{{ mariadb_password.stdout }}"
+
 - name: Create database for cachet
   mysql_db:
     name: cachet
