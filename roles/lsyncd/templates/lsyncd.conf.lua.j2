@@ -15,3 +15,15 @@ sync {
         compress  =  false
     }
 }
+
+sync {
+    default.rsyncssh,
+    source = "/var/www/html",
+    host = "{{ lsyncd.koanssite }}",
+    targetdir = "/var/www/html",
+    delete = "running",
+    exclude = { ".tmp" },
+    rsync  =  {
+        compress  =  false
+    }
+}

@@ -5,3 +5,4 @@ cert:
 
 lsyncd:
   toysite: "linuxtoy.org"
+  koanssite: "unixkoans.com"
