@@ -1,5 +1,5 @@
 {
-    "target":"127.0.0.1:8530",
-    "listen":":8540",
-    "mode":"fast3"
+    "target":"{{ ansible_default_ipv4.address }}:8530",
+    "listen":"0.0.0.0:8540",
+    "mode":"fast2"
 }

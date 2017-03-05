@@ -2,7 +2,7 @@
 - name: Install shadowsocks-libev
   apt:
     name: shadowsocks-libev
-    state: latest
+    state: present
     default_release: jessie-backports
 
 - name: Generate Shadowsocks password
