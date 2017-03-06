@@ -6,7 +6,7 @@ settings {
 
 sync {
     default.rsyncssh,
-    source = "/var/www/linuxtoy.org",
+    source = "/var/lib/jenkins/workspace/pelican-linuxtoy/output",
     host = "{{ lsyncd.toysite }}",
     targetdir = "/home/www/toy_source/output",
     delete = "running",
