@@ -62,4 +62,4 @@
     minute: "20"
     hour: "1"
     user: postgres
-    job: "pg_backup.sh -c /etc/postgresql/pg_backup.conf"
+    job: "/usr/local/bin/pg_backup.sh -c /etc/postgresql/pg_backup.conf"
