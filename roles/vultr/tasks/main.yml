@@ -18,6 +18,12 @@
     wait: yes
   register: vultr_server
 
+- debug:
+    msg: "Server ID: {{ vultr_server.server.SUBID }}"
+
+- debug:
+    msg: "Server IP: {{ vultr_server.server.main_ip }}"
+
 - name: Wait until the server has finished start
   wait_for:
     host: "{{ vultr_server.server.main_ip }}"
