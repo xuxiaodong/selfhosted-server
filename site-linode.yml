@@ -30,3 +30,4 @@
   - lsyncd
   - mariadb
   - cachet
+  - prometheus
