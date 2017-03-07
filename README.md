@@ -48,7 +48,10 @@ selfhosted-server
 
 ## 用法
 
-    ./play-site.sh
+请参考《跟 Toy 玩自架服务器》系列文章：
+
+1. [创建 Vultr 服务器实例](https://linuxtoy.org/archives/selfhosted-server-1.html)
+2. [创建 Linode 服务器实例](https://linuxtoy.org/archives/selfhosted-server-2.html)
 
 ## 许可
 
