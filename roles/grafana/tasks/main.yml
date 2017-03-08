@@ -1,0 +1,21 @@
+---
+- name: Add apt key
+  apt_key:
+    url: https://packagecloud.io/gpg.key
+    state: present
+
+- name: Add apt repo
+  apt_repository:
+    repo: deb https://packagecloud.io/grafana/stable/debian/ jessie main
+    state: present
+
+- name: Install package
+  apt:
+    name: grafana
+    state: present
+
+- name: Enable service
+  systemd:
+    name: grafana-server
+    state: started
+    enabled: yes
