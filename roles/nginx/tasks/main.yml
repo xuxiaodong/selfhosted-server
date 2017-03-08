@@ -30,6 +30,7 @@
   - { src: "dl.j2", dest: "dl" }
   - { src: "status.j2", dest: "status" }
   - { src: "default.j2", dest: "default" }
+  - { src: "dashboard.j2", dest: "dashboard" }
   notify: Restart Nginx
 
 - name: Enable virtual host
@@ -46,3 +47,4 @@
   - { src: "dl", dest: "dl" }
   - { src: "status", dest: "status" }
   - { src: "default", dest: "default" }
+  - { src: "dashboard", dest: "dashboard" }

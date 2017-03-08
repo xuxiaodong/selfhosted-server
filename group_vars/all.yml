@@ -19,6 +19,7 @@ nginx:
   ci_domain_name: "ci.unixkoans.com"
   status_domain_name: "status.unixkoans.com"
   dl_domain_name: "dl.unixkoans.com"
+  dash_domain_name: "dashboard.unixkoans.com"
 
 postgresql:
   password_file: "/etc/postgresql/postgresql-password.txt"
