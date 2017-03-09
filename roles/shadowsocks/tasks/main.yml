@@ -13,6 +13,7 @@
 - name: Get Shadowsocks password
   command: cat {{ shadowsocks.password_file }}
   register: shadowsocks_password
+  changed_when: "shadowsocks_password.rc != 0"
 
 - name: Generate Shadowsocks config
   template:

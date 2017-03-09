@@ -6,6 +6,7 @@
 - name: Get SSH key
   command: cat ~/.ssh/id_rsa.pub
   register: do_ssh_pub_key
+  changed_when: "do_ssh_pub_key.rc != 0"
 
 - name: Ensure SSH key
   digital_ocean:

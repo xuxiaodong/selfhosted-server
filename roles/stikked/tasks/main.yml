@@ -12,6 +12,7 @@
 - name: Get key
   command: cat {{ stikked.password_file }}
   register: stikked_password
+  changed_when: "stikked_password.rc != 0"
 
 - name: Generate config
   template:

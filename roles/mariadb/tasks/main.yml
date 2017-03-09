@@ -12,6 +12,7 @@
 - name: Get password
   command: cat {{ mariadb.password_file }}
   register: mariadb_password
+  changed_when: "mariadb_password.rc != 0"
 
 - name: Configure password
   debconf:

@@ -6,6 +6,7 @@
 - name: Get SSH key
   command: cat ~/.ssh/id_rsa.pub
   register: linode_ssh_pub_key
+  changed_when: "linode_ssh_pub_key.rc != 0"
 
 - name: Create server
   linode:

@@ -18,6 +18,7 @@
 - name: Get postgresql user password
   command: cat {{ postgresql.password_file }}
   register: postgresql_password
+  changed_when: "postgresql_password.rc != 0"
 
 - name: Create user
   postgresql_user:

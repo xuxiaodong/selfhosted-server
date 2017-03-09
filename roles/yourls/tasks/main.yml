@@ -8,6 +8,7 @@
 - name: Get mariadb password
   command: cat {{ mariadb.password_file }}
   register: mariadb_password
+  changed_when: "mariadb_password.rc != 0"
 
 - name: Create database for yourls
   mysql_db:
@@ -24,6 +25,7 @@
 - name: Get key
   command: cat {{ yourls.password_file }}
   register: yourls_password
+  changed_when: "yourls_password.rc != 0"
 
 - name: Generate config
   template:
@@ -45,3 +47,4 @@
     owner: www-data
     group: www-data
     recurse: yes
+    state: directory

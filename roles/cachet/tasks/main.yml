@@ -9,6 +9,7 @@
 - name: Get password
   command: cat {{ mariadb.password_file }}
   register: mariadb_password
+  changed_when: "mariadb_password.rc != 0"
 
 - name: Change owner of cachet
   file:
@@ -46,6 +47,7 @@
   args:
     chdir: /var/www/cachet
   register: cachet_key
+  changed_when: "cachet_key.rc != 0"
 
 - name: Generate config
   template:
