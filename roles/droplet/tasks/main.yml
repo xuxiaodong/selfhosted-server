@@ -39,6 +39,13 @@
 - debug:
     msg: "Droplet IP: {{ do_droplet.droplet.ip_address }}"
 
+- name: Wait until the server has  finished start
+  wait_for:
+    host: "{{ do_droplet.droplet.ip_address }}"
+    port: 22
+    search_regex: OpenSSH
+    timeout: 600
+
 - add_host:
     name: "{{ do_droplet.droplet.ip_address }}"
     groups: digital_ocean
