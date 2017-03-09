@@ -1,0 +1,47 @@
+---
+- name: Get source
+  git:
+    repo: https://github.com/YOURLS/YOURLS.git
+    dest: /var/www/yourls
+    version: master
+
+- name: Get mariadb password
+  command: cat {{ mariadb.password_file }}
+  register: mariadb_password
+
+- name: Create database for yourls
+  mysql_db:
+    name: yourls
+    state: present
+    login_user: root
+    login_password: "{{ mariadb_password.stdout }}"
+
+- name: Generate key
+  shell: openssl rand -base64 16 | sed -e 's/=//g;s/\///g' > {{ yourls.password_file }}
+  args:
+    creates: "{{ yourls.password_file }}"
+
+- name: Get key
+  command: cat {{ yourls.password_file }}
+  register: yourls_password
+
+- name: Generate config
+  template:
+    src: config.php.j2
+    dest: /var/www/yourls/user/config.php
+    owner: www-data
+    group: www-data
+    mode: 0644
+
+- name: Copy index page
+  command: cp sample-public-front-page.txt index.php
+  args:
+    chdir: /var/www/yourls
+    creates: index.php
+
+- name: Change owner of yourls
+  file:
+    path: /var/www/yourls
+    owner: www-data
+    group: www-data
+    recurse: yes

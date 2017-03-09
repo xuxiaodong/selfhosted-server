@@ -3,6 +3,7 @@ cert:
   status_domain_name: "status.unixkoans.com"
   dl_domain_name: "dl.unixkoans.com"
   dash_domain_name: "dashboard.unixkoans.com"
+  shurl_domain_name: "shurl.unixkoans.com"
 
 lsyncd:
   toysite: "linuxtoy.org"

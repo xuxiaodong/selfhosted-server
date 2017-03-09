@@ -8,43 +8,45 @@
 
 - name: Generate nginx config
   template:
-    src: "{{ item.src }}"
-    dest: "/etc/nginx/{{ item.dest }}"
+    src: "{{ item }}.j2"
+    dest: "/etc/nginx/{{ item }}"
     mode: 0644
   with_items:
-  - { src: "nginx.conf.j2", dest: "nginx.conf" }
-  - { src: "ssl_params.j2", dest: "ssl_params" }
+  - nginx.conf
+  - ssl_params
   notify: Restart Nginx
 
 - name: Add virtual host config
   template:
-    src: "{{ item.src }}"
-    dest: "/etc/nginx/sites-available/{{ item.dest }}"
+    src: "{{ item }}.j2"
+    dest: "/etc/nginx/sites-available/{{ item }}"
     mode: 0644
   with_items:
-  - { src: "planet.j2", dest: "planet" }
-  - { src: "sync.j2", dest: "sync" }
-  - { src: "paste.j2", dest: "paste" }
-  - { src: "git.j2", dest: "git" }
-  - { src: "ci.j2", dest: "ci" }
-  - { src: "dl.j2", dest: "dl" }
-  - { src: "status.j2", dest: "status" }
-  - { src: "default.j2", dest: "default" }
-  - { src: "dashboard.j2", dest: "dashboard" }
+  - planet
+  - sync
+  - paste
+  - git
+  - ci
+  - dl
+  - status
+  - default
+  - dashboard
+  - shurl
   notify: Restart Nginx
 
 - name: Enable virtual host
   file:
-    src: "/etc/nginx/sites-available/{{ item.src }}"
-    dest: "/etc/nginx/sites-enabled/{{ item.dest }}"
+    src: "/etc/nginx/sites-available/{{ item }}"
+    dest: "/etc/nginx/sites-enabled/{{ item }}"
     state: link
   with_items:
-  - { src: "planet", dest: "planet" }
-  - { src: "sync", dest: "sync" }
-  - { src: "paste", dest: "paste" }
-  - { src: "git", dest: "git" }
-  - { src: "ci", dest: "ci" }
-  - { src: "dl", dest: "dl" }
-  - { src: "status", dest: "status" }
-  - { src: "default", dest: "default" }
-  - { src: "dashboard", dest: "dashboard" }
+  - planet
+  - sync
+  - paste
+  - git
+  - ci
+  - dl
+  - status
+  - default
+  - dashboard
+  - shurl

@@ -20,6 +20,7 @@ nginx:
   status_domain_name: "status.unixkoans.com"
   dl_domain_name: "dl.unixkoans.com"
   dash_domain_name: "dashboard.unixkoans.com"
+  shurl_domain_name: "shurl.unixkoans.com"
 
 postgresql:
   password_file: "/etc/postgresql/postgresql-password.txt"
@@ -30,6 +31,10 @@ mariadb:
 stikked:
   user: "toyland"
   password_file: "/etc/stikked-password.txt"
+
+yourls:
+  user: "toyland"
+  password_file: "/etc/yourls-password.txt"
 
 kcptun:
   version: 20170221
