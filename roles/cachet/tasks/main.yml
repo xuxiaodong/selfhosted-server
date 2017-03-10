@@ -11,6 +11,13 @@
   register: mariadb_password
   changed_when: "mariadb_password.rc != 0"
 
+- name: Create database for cachet
+  mysql_db:
+    name: cachet
+    state: present
+    login_user: root
+    login_password: "{{ mariadb_password.stdout }}"
+
 - name: Change owner of cachet
   file:
     path: /var/www/cachet
