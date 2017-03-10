@@ -4,11 +4,12 @@ settings {
     statusInterval = 20
 }
 
+{% for conf in configs %}
 sync {
     default.rsyncssh,
-    source = "/var/lib/jenkins/workspace/pelican-linuxtoy/output",
-    host = "{{ lsyncd.toysite }}",
-    targetdir = "/home/www/toy_source/output",
+    host = "{{ conf.host }}",
+    source = "{{ conf.source }}",
+    targetdir = "{{ conf.target }}",
     delete = "running",
     exclude = { ".tmp" },
     rsync  =  {
@@ -16,14 +17,4 @@ sync {
     }
 }
 
-sync {
-    default.rsyncssh,
-    source = "/var/www/html",
-    host = "{{ lsyncd.koanssite }}",
-    targetdir = "/var/www/html",
-    delete = "running",
-    exclude = { ".tmp" },
-    rsync  =  {
-        compress  =  false
-    }
-}
+{% endfor %}

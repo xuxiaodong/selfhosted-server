@@ -33,7 +33,14 @@
   - jenkins
   - debian-packaging
   - pelican
-  - lsyncd
+  - role: lsyncd
+    configs:
+    - host: linuxtoy.org
+      source: /var/lib/jenkins/workspace/pelican-linuxtoy/output
+      target: /home/www/toy_source/output
+    - host: unixkoans.com
+      source: /var/www/html
+      target: /var/www/html
   - mariadb
   - cachet
   - prometheus

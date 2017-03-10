@@ -2,8 +2,8 @@
 - name: Install packages
   apt:
     name: "{{ item }}"
-    default_release: jessie-backports
     state: present
+    default_release: jessie-backports
   with_items:
   - lsyncd
 
