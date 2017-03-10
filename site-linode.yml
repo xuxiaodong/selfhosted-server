@@ -22,9 +22,15 @@
   - shadowsocks
   - kcptun
   - php
+  - role: certbot
+    domains:
+    - ci.unixkoans.com
+    - status.unixkoans.com
+    - dl.unixkoans.com
+    - dashboard.unixkoans.com
+    - shurl.unixkoans.com
   - nginx
   - jenkins
-  - certbot
   - debian-packaging
   - pelican
   - lsyncd

@@ -2,11 +2,10 @@
 - name: Install certbot
   apt:
     name: "{{ item }}"
-    state: latest
+    state: present
     default_release: jessie-backports
   with_items:
   - certbot
-  - python-certbot-nginx
 
 - name: Generate config
   template:
@@ -15,7 +14,9 @@
     mode: 0644
 
 - name: Get cert
-  shell: certbot certonly -c /etc/letsencrypt/cli.ini
+  command: certbot certonly -c /etc/letsencrypt/cli.ini
+  register: run_certbot
+  changed_when: "run_certbot.rc != 0"
 
 # See also: https://github.com/certbot/certbot/issues/4096
 - name: Add cron

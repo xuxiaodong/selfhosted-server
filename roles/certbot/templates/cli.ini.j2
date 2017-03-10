@@ -10,7 +10,7 @@ email = {{ user.email }}
 
 # Uncomment and update to generate certificates for the specified
 # domains.
-domains = {{ cert.values() | join(', ') }}
+domains = {{ domains | join(', ') }}
 
 # Uncomment to use a text interface instead of ncurses
 # text = True
