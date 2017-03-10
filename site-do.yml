@@ -22,10 +22,30 @@
   - fail2ban
   - obnam
   - shadowsocks
-  - nginx
+  - role: certbot
+    domains:
+    - unixkoans.com
+    - www.unixkoans.com
+    - planet.unixkoans.com
+    - sync.unixkoans.com
+    - paste.unixkoans.com
+    - git.unixkoans.com
+    - fonts.unixkoans.com
+  - role: nginx
+    config:
+      default: unixkoans.com
+      planet: planet.unixkoans.com
+      sync: sync.unixkoans.com
+      paste: paste.unixkoans.com
+      git: git.unixkoans.com
+      ci: ci.unixkoans.com
+      status: status.unixkoans.com
+      dl: dl.unixkoans.com
+      dashboard: dashboard.unixkoans.com
+      shurl: shurl.unixkoans.com
   - postgresql
   - php
   - ttrss
   - syncthing
-  - stikked
-  - certbot
+  - role: stikked
+    paste_domain: paste.unixkoans.com

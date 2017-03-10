@@ -36,7 +36,7 @@
 ;http_port = 3000
 
 # The public facing domain name used to access grafana from a browser
-domain = {{ nginx.dash_domain_name }}
+domain = {{ dashboard_domain }}
 
 # Redirect to correct domain if host header does not match domain
 # Prevents DNS rebinding attacks

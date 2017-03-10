@@ -4,7 +4,6 @@
     name: nginx-extras
     state: present
     default_release: jessie-backports
-    force: yes
 
 - name: Generate nginx config
   template:
@@ -21,17 +20,7 @@
     src: "{{ item }}.j2"
     dest: "/etc/nginx/sites-available/{{ item }}"
     mode: 0644
-  with_items:
-  - planet
-  - sync
-  - paste
-  - git
-  - ci
-  - dl
-  - status
-  - default
-  - dashboard
-  - shurl
+  with_items: "{{ config.keys() }}"
   notify: Restart Nginx
 
 - name: Enable virtual host
@@ -39,14 +28,4 @@
     src: "/etc/nginx/sites-available/{{ item }}"
     dest: "/etc/nginx/sites-enabled/{{ item }}"
     state: link
-  with_items:
-  - planet
-  - sync
-  - paste
-  - git
-  - ci
-  - dl
-  - status
-  - default
-  - dashboard
-  - shurl
+  with_items: "{{ config.keys() }}"

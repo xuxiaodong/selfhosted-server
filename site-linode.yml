@@ -29,7 +29,18 @@
     - dl.unixkoans.com
     - dashboard.unixkoans.com
     - shurl.unixkoans.com
-  - nginx
+  - role: nginx
+    config:
+      default: unixkoans.com
+      planet: planet.unixkoans.com
+      sync: sync.unixkoans.com
+      paste: paste.unixkoans.com
+      git: git.unixkoans.com
+      ci: ci.unixkoans.com
+      status: status.unixkoans.com
+      dl: dl.unixkoans.com
+      dashboard: dashboard.unixkoans.com
+      shurl: shurl.unixkoans.com
   - jenkins
   - debian-packaging
   - pelican
@@ -42,7 +53,10 @@
       source: /var/www/html
       target: /var/www/html
   - mariadb
-  - cachet
+  - role: cachet
+    status_domain: status.unixkoans.com
   - prometheus
-  - grafana
-  - yourls
+  - role: grafana
+    dashboard_domain: dashboard.unixkoans.com
+  - role: yourls
+    shurl_domain: shurl.unixkoans.com

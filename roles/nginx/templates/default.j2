@@ -1,27 +1,27 @@
 server {
     listen  80;
-    server_name {{ nginx.www_domain_name }};
-    return 301 https://{{ nginx.default_domain_name }}$request_uri;
+    server_name www.{{ config.default }};
+    return 301 https://{{ config.default }}$request_uri;
 }
 
 server {
     listen 443 ssl http2;
-    server_name {{ nginx.www_domain_name }};
-    return 301 https://{{ nginx.default_domain_name }}$request_uri;
+    server_name www.{{ config.default }};
+    return 301 https://{{ config.default }}$request_uri;
 }
 
 server {
     listen 80;
-    server_name {{ nginx.default_domain_name }};
+    server_name {{ config.default }};
     return 301 https://$host$request_uri;
 }
 
 server {
     listen 443 ssl http2;
-    server_name {{ nginx.default_domain_name }};
+    server_name {{ config.default }};
 
-    ssl_certificate /etc/letsencrypt/live/{{ nginx.default_domain_name }}/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/{{ nginx.default_domain_name }}/privkey.pem;
+    ssl_certificate /etc/letsencrypt/live/{{ config.default }}/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/{{ config.default }}/privkey.pem;
     include /etc/nginx/ssl_params;
 
     root /var/www/html;

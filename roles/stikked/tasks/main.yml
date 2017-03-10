@@ -33,4 +33,4 @@
     name: "clean pastes"
     minute: "*/30"
     user: www-data
-    job: "curl --silent http://{{ nginx.paste_domain_name }}/cron/{{ stikked_password.stdout }}"
+    job: "curl --silent http://{{ paste_domain }}/cron/{{ stikked_password.stdout }}"

@@ -1,15 +1,15 @@
 server {
     listen  80;
-    server_name {{ nginx.git_domain_name }};
+    server_name {{ config.git }};
     return 301 https://$host$request_uri;
 }
 
 server {
     listen 443 ssl http2;
-    server_name {{ nginx.git_domain_name }};
+    server_name {{ config.git }};
 
-    ssl_certificate /etc/letsencrypt/live/{{ nginx.git_domain_name }}/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/{{ nginx.git_domain_name }}/privkey.pem;
+    ssl_certificate /etc/letsencrypt/live/{{ config.git }}/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/{{ config.git }}/privkey.pem;
     include /etc/nginx/ssl_params;
 
     root /var/www/git/html;
