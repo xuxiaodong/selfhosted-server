@@ -11,7 +11,7 @@
     ipv4_range: "10.240.16.0/24"
     service_account_email: "{{ gce.service_account_email }}"
     credentials_file: "{{ credentials_file }}"
-    project_id: "{{ project_id }}"
+    project_id: "{{ gce.project_id }}"
 
 - name: Open tcp/udp ports
   gce_net:
@@ -22,7 +22,7 @@
     src_range: "0.0.0.0/0"
     service_account_email: "{{ gce.service_account_email }}"
     credentials_file: "{{ credentials_file }}"
-    project_id: "{{ project_id }}"
+    project_id: "{{ gce.project_id }}"
 
 - name: Create instance
   gce:
@@ -33,7 +33,7 @@
     state: present
     service_account_email: "{{ gce.service_account_email }}"
     credentials_file: "{{ credentials_file }}"
-    project_id: "{{ project_id }}"
+    project_id: "{{ gce.project_id }}"
     metadata: '{"sshKeys": "root:{{ gce_ssh_pub_key.stdout }}"}'
   register: gce_server
 
