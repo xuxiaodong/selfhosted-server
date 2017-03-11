@@ -1,0 +1,24 @@
+---
+- name: Install packages
+  apt:
+    name: "{{ item }}"
+    state: present
+    default_release: jessie-backports
+  with_items:
+  - ansible
+  - python-pycurl
+
+- name: Install libraries
+  pip:
+    name: "{{ item }}"
+    state: present
+  with_items:
+  - linode-python
+  - dopy
+
+- name: Get selfhosted-server
+  git:
+    repo: https://github.com/xuxiaodong/selfhosted-server.git
+    dest: /root/selfhosted-server
+    recursive: yes
+    version: master
