@@ -11,7 +11,7 @@ echo -n "Which provider are you using?
   1. DigitalOcean
   2. Linode
   3. Vultr
-  4. Google Computer Engine
+  4. Google Compute Engine
 Your choose (number): "
 
 read reply
