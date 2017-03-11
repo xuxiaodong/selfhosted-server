@@ -13,6 +13,17 @@
     credentials_file: "{{ credentials_file }}"
     project_id: "{{ gce.project_id }}"
 
+- name: Allow icmp
+  gce_net:
+    name: privatenet
+    fwname: "{{ gce.name }}-icmp"
+    allowed: "icmp"
+    state: present
+    src_range: "0.0.0.0/0"
+    service_account_email: "{{ gce.service_account_email }}"
+    credentials_file: "{{ credentials_file }}"
+    project_id: "{{ gce.project_id }}"
+
 - name: Open tcp/udp ports
   gce_net:
     name: privatenet
