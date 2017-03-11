@@ -27,6 +27,7 @@
 - name: Create instance
   gce:
     instance_names: "{{ gce.name }}"
+    network: privatenet
     zone: "{{ gce.region }}"
     machine_type: "{{ gce.machine_type }}"
     image: "{{ gce.image }}"
@@ -34,7 +35,7 @@
     service_account_email: "{{ gce.service_account_email }}"
     credentials_file: "{{ credentials_file }}"
     project_id: "{{ gce.project_id }}"
-    metadata: '{"sshKeys": "root:{{ gce_ssh_pub_key.stdout }}"}'
+    metadata: '{"sshKeys":"root:{{ gce_ssh_pub_key.stdout }}"}'
   register: gce_server
 
 - name: Wait until the server has finished start
