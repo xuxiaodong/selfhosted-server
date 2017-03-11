@@ -1,7 +1,7 @@
 selfhosted-server
 -----------------
 
-利用 [Ansible][1] 快速自架各种服务器，包括 Shadowsocks、NGINX、PostgreSQL、Tiny Tiny RSS、Syncthing、Stikked、Git、Jenkins 等等。目前，支持 DigitalOcean、Linode、Vultr 等 VPS，采用 [Debian GNU/Linux][2] 8.7 64 位版本系统。
+利用 [Ansible][1] 快速自架各种服务器，包括 Shadowsocks、NGINX、PostgreSQL、Tiny Tiny RSS、Syncthing、Stikked、Git、Jenkins 等等。目前，支持 DigitalOcean、Linode、Vultr、Google Compute Engine 等 VPS，采用 [Debian GNU/Linux][2] 8.7 64 位版本系统。
 
 ## Role 说明
 
@@ -10,6 +10,7 @@ selfhosted-server
 + droplet：在 [DigitalOcean][3] 上创建 droplet
 + linode：在 [Linode][16] 上创建服务器实例
 + vultr：在 [Vultr][29] 上创建服务器实例
++ gce：在 [Google Cloud Platform][30] 上创建服务器实例
 
 ### Debian
 
@@ -28,6 +29,9 @@ selfhosted-server
 + [git][13]：Git 版本控制系统，外加 [stagit][14] 静态 Git 页面生成器 ([demo][24])
 + jenkins：[Jenkins][18] 持续集成/交付服务 ([demo][25])
 + cachet：[Cachet][27] 状态页面系统 ([demo][28])
++ prometheus：[Prometheus][31] 监视及告警系统
++ grafana：[Grafana][32] 可视化 Dashboard
++ yourls：[Yourls][33] 网址缩短服务
 
 ### Database
 
@@ -45,6 +49,7 @@ selfhosted-server
 + [obname][15]：备份工具
 + pelican：[Pelican][19] 静态站点生成器
 + lsyncd：[Lsyncd][20] 实时同步（Mirror）
++ ansible：Ansible 自动化工具
 
 ## 用法
 
@@ -88,3 +93,7 @@ Copyright © 2017 Xiaodong Xu, https://linuxtoy.org <xxdlhy [at] gmail [dot] com
 [27]: https://cachethq.io/
 [28]: https://status.unixkoans.com/
 [29]: http://www.vultr.com/?ref=7123175
+[30]: https://cloud.google.com/
+[31]: https://prometheus.io/
+[32]: http://grafana.org/
+[33]: http://yourls.org/
