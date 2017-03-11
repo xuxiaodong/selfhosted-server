@@ -71,4 +71,5 @@
     url: "https://github.com/{{ user.name }}.keys"
     dest: /root/.ssh/id_rsa.pub
     mode: 0600
+  ignoreerrors: yes
   when: "ssh_key.rc != 0"
