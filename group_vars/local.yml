@@ -20,3 +20,11 @@ vultr:
   distro_id: 193
   ssh_key_id: 58b917dc1b55b
   server_name: toydroid
+
+gce:
+  service_account_email: 154424209829-compute@developer.gserviceaccount.com
+  project_id: unixkoans
+  machine_type: f1-micro
+  image: debian-8
+  region: asia-east1-c
+  name: toyengine

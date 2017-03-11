@@ -1,0 +1,23 @@
+---
+- hosts: local
+  gather_facts: False
+  become: True
+
+  vars_prompt:
+  - name: credentials_file
+    prompt: "Your gce credentials file"
+    private: no
+
+  roles:
+  - gce
+
+- hosts: gce
+  become: True
+
+  roles:
+  - common
+  - unattendedupgrades
+  - fail2ban
+  - git-client
+  - shadowsocks
+  - kcptun

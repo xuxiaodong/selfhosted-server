@@ -15,6 +15,7 @@
   with_items:
   - linode-python
   - dopy
+  - apache-libcloud
 
 - name: Get selfhosted-server
   git:
