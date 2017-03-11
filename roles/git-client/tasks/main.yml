@@ -2,6 +2,6 @@
 - name: Install packages
   apt:
     name: "{{ item }}"
-    state: latest
+    state: present
   with_items:
   - git

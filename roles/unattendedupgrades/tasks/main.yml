@@ -2,7 +2,7 @@
 - name: Install packages
   apt:
     name: "{{ item }}"
-    state: latest
+    state: present
   with_items:
   - unattended-upgrades
   - apt-listchanges
@@ -13,6 +13,9 @@
     dest: "/etc/apt/{{ item.dest }}"
     mode: 0644
   with_items:
-  - { src: "50unattended-upgrades.j2", dest: "apt.conf.d/50unattended-upgrades" }
-  - { src: "20auto-upgrades.j2", dest: "apt.conf.d/20auto-upgrades" }
-  - { src: "listchanges.conf.j2", dest: "listchanges.conf" }
+  - src: 50unattended-upgrades.j2
+    dest: apt.conf.d/50unattended-upgrades
+  - src: 20auto-upgrades.j2
+    dest: apt.conf.d/20auto-upgrades
+  - src: listchanges.conf.j2
+    dest: listchanges.conf

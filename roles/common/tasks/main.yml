@@ -34,17 +34,26 @@
 
 - name: Sysctl config
   sysctl:
-    name: "{{ item.name  }}"
-    value: "{{ item.value  }}"
+    name: "{{ item.name }}"
+    value: "{{ item.value }}"
     state: present
     ignoreerrors: yes
   with_items:
-  - { name: "net.ipv4.tcp_fastopen", value: 3 }
-  - { name: "net.ipv4.tcp_slow_start_after_idle", value: 0 }
-  - { name: "net.core.busy_read", value: 50 }
-  - { name: "net.core.busy_poll", value: 50 }
-  - { name: "kernel.sched_min_granularity_ns", value: 10000000 }
-  - { name: "kernel.sched_wakeup_granularity_ns", value: 15000000 }
-  - { name: "vm.dirty_ratio", value: 30 }
-  - { name: "vm.dirty_background_ratio", value: 10 }
-  - { name: "vm.swappiness", value: 30 }
+  - name: net.ipv4.tcp_fastopen
+    value: 3
+  - name: net.ipv4.tcp_slow_start_after_idle
+    value: 0
+  - name: net.core.busy_read
+    value: 50
+  - name: net.core.busy_poll
+    value: 50
+  - name: kernel.sched_min_granularity_ns
+    value: 10000000
+  - name: kernel.sched_wakeup_granularity_ns
+    value: 15000000
+  - name: vm.dirty_ratio
+    value: 30
+  - name: vm.dirty_background_ratio
+    value: 10
+  - name: vm.swappiness
+    value: 30
