@@ -22,3 +22,7 @@
   - shadowsocks
   - kcptun
   - ansible
+  - openjdk
+  - user
+  - debian-packaging
+  - pelican

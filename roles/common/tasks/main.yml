@@ -17,6 +17,8 @@
   - rsync
   - python-pip
   - virtualenv
+  - sudo
+  - ntp
 
 - name: Add personal repository
   apt_repository:
