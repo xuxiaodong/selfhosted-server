@@ -12,6 +12,13 @@
     recurse: yes
     state: directory
 
+- name: Create database
+  postgresql_db:
+    name: ttrss
+    owner: www-data
+  become: true
+  become_user: postgres
+
 - name: Add cron
   cron:
     name: "check feeds"

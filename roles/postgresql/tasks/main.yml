@@ -2,7 +2,7 @@
 - name: Install postgresql
   apt:
     name: "{{ item }}"
-    state: latest
+    state: present
     default_release: jessie-backports
   with_items:
   - postgresql
@@ -24,16 +24,6 @@
   postgresql_user:
     name: www-data
     password: "{{ postgresql_password }}"
-  become: true
-  become_user: postgres
-
-- name: Create database
-  postgresql_db:
-    name: "{{ item }}"
-    owner: www-data
-  with_items:
-  - ttrss
-  - stikked
   become: true
   become_user: postgres
 
