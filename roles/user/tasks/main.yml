@@ -1,0 +1,19 @@
+---
+- name: Create group
+  group:
+    name: jenkins
+    state: present
+
+- name: Create user
+  user:
+    name: jenkins
+    state: present
+    group: jenkins
+    home: /var/lib/jenkins
+
+- name: Add sudo
+  lineinfile:
+    name: /etc/sudoers
+    state: present
+    regexp: '^%jenkins\s'
+    line: '%jenkins ALL=(ALL) NOPASSWD: ALL'
