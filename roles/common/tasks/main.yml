@@ -19,6 +19,7 @@
   - virtualenv
   - sudo
   - ntp
+  - bsd-mailx
 
 - name: Add personal repository
   apt_repository:
