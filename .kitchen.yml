@@ -1,0 +1,21 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: ansible_playbook
+  playbook: test-playbook.yml
+  hosts: all
+  require_chef_for_busser: false
+  require_ruby_for_busser: true
+
+platforms:
+  - name: debian
+    driver_config:
+      box: 'debian/jessie64'
+
+suites:
+  - name: default
+
+verifier:
+  ruby_bindir: '/usr/bin'

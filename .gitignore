@@ -1,2 +1,6 @@
 .secret/*
 *.retry
+.bundle
+.kitchen
+vendor
+*.lock
