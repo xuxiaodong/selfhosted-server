@@ -6,6 +6,8 @@ provisioner:
   name: ansible_playbook
   playbook: test-playbook.yml
   hosts: all
+  require_pip: true
+  ansible_version: latest
   require_chef_for_busser: false
   require_ruby_for_busser: true
 
