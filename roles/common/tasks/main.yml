@@ -63,6 +63,18 @@
   - name: vm.swappiness
     value: 30
 
+- name: Enable tcp bbr
+  sysctl:
+    name: "{{ item.name }}"
+    value: "{{ item.value }}"
+    state: present
+  with_items:
+  - name: net.core.default_qdisc
+    value: fq
+  - name: net.ipv4.tcp_congestion_control
+    value: bbr
+  when: "ansible_kernel >= '4.9.0'"
+
 - name: Check ssh key exist
   command: test -e /root/.ssh/id_rsa.pub
   register: ssh_key
