@@ -23,6 +23,10 @@
   - kcptun
   - ansible
   - openjdk
-  - user
+  - role: user
+    user_metadata:
+    - user_name: jenkins
+      group_name: jenkins
+      user_home: /var/lib
   - debian-packaging
   - pelican

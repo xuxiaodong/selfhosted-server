@@ -1,19 +1,22 @@
 ---
 - name: Create group
   group:
-    name: jenkins
+    name: "{{ item.group_name }}"
     state: present
+  with_items: "{{ user_metadata }}"
 
 - name: Create user
   user:
-    name: jenkins
+    name: "{{ item.user_name }}"
     state: present
-    group: jenkins
-    home: /var/lib/jenkins
+    group: "{{ item.group_name }}"
+    home: "{{ item.user_home }}/{{ item.user_name }}"
+  with_items: "{{ user_metadata }}"
 
 - name: Add sudo
   lineinfile:
     name: /etc/sudoers
     state: present
-    regexp: '^%jenkins\s'
-    line: '%jenkins ALL=(ALL) NOPASSWD: ALL'
+    regexp: "^%{{ item.group_name }} "
+    line: "%{{ item.group_name }} ALL=(ALL) NOPASSWD: ALL"
+  with_items: "{{ user_metadata }}"
