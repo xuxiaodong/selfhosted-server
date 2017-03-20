@@ -35,3 +35,4 @@
   add_host:
     name: "{{ vultr_server.server.main_ip }}"
     groups: vultr
+  changed_when: vultr_server.changed

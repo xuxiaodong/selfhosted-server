@@ -11,6 +11,7 @@
     state: present
     group: "{{ item.group_name }}"
     home: "{{ item.user_home }}/{{ item.user_name }}"
+    shell: /bin/bash
   with_items: "{{ user_metadata }}"
 
 - name: Add sudo
@@ -19,4 +20,10 @@
     state: present
     regexp: "^%{{ item.group_name }} "
     line: "%{{ item.group_name }} ALL=(ALL) NOPASSWD: ALL"
+  with_items: "{{ user_metadata }}"
+
+- name: Set authorized key
+  authorized_key:
+    user: "{{ item.user_name }}"
+    key: "https://github.com/{{ item.github_user }}.keys"
   with_items: "{{ user_metadata }}"

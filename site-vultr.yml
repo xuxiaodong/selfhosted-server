@@ -28,5 +28,10 @@
     - user_name: jenkins
       group_name: jenkins
       user_home: /var/lib
+      github_user: xuxiaodong
+    - user_name: toyland
+      group_name: wheel
+      user_home: /home
+      github_user: xuxiaodong
   - debian-packaging
   - pelican
