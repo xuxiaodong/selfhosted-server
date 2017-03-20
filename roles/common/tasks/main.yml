@@ -57,14 +57,16 @@
     state: present
     ignoreerrors: yes
   with_items:
-  - name: net.ipv4.tcp_fastopen
-    value: 3
-  - name: net.ipv4.tcp_slow_start_after_idle
-    value: 0
+  - name: net.core.default_qdisc
+    value: fq
   - name: net.core.busy_read
     value: 50
   - name: net.core.busy_poll
     value: 50
+  - name: net.ipv4.tcp_fastopen
+    value: 3
+  - name: net.ipv4.tcp_slow_start_after_idle
+    value: 0
   - name: kernel.sched_min_granularity_ns
     value: 10000000
   - name: kernel.sched_wakeup_granularity_ns
@@ -82,8 +84,6 @@
     value: "{{ item.value }}"
     state: present
   with_items:
-  - name: net.core.default_qdisc
-    value: fq
   - name: net.ipv4.tcp_congestion_control
     value: bbr
   when: "ansible_kernel >= '4.9.0'"
