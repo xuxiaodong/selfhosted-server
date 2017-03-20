@@ -1,0 +1,21 @@
+---
+- name: Install package
+  apt:
+    name: tmux
+    state: present
+    default_release: jessie-backports
+
+- name: Get config
+  git:
+    repo: https://github.com/xuxiaodong/tmuxen.git
+    dest: "/home/{{ user }}/tmuxen"
+    version: master
+
+- name: Set config
+  file:
+    src: "/home/{{ user }}/{{ item.src }}"
+    dest: "/home/{{ user }}/{{ item.dest }}"
+    state: link
+  with_items:
+  - src: "tmuxen/_tmux.conf"
+    dest: ".tmux.conf"
