@@ -21,6 +21,19 @@
   - ntp
   - bsd-mailx
 
+- name: Upgrade kernel
+  apt:
+    name: linux-image-amd64
+    state: latest
+    default_release: jessie-backports
+
+- name: Load bbr module
+  lineinfile:
+    name: /etc/modules
+    state: present
+    regexp: '^tcp_bbr$'
+    line: 'tcp_bbr'
+
 - name: Add personal repository
   apt_repository:
     repo: "deb https://dl.unixkoans.com/ unstable/"
