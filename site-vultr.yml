@@ -35,3 +35,4 @@
       github_user: xuxiaodong
   - debian-packaging
   - pelican
+  - docker

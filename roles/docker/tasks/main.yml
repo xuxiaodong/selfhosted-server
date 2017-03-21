@@ -1,0 +1,21 @@
+---
+- name: Add apt key
+  apt_key:
+    url: "https://download.docker.com/linux/debian/gpg"
+    state: present
+
+- name: Add apt repository
+  apt_repository:
+    repo: "deb https://download.docker.com/linux/debian jessie stable"
+    state: present
+
+- name: Install package
+  apt:
+    name: docker-ce
+    state: present
+
+- name: Enable service
+  systemd:
+    name: docker
+    state: started
+    enabled: yes
