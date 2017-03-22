@@ -17,6 +17,7 @@ selfhosted-server
 + common：常用的包及系统调优
 + unattendedupgrades：Debian 系统自动升级
 + debian-packaging：Debian 打包环境
++ user：添加系统用户帐号
 
 ### Web Service
 
@@ -50,6 +51,9 @@ selfhosted-server
 + pelican：[Pelican][19] 静态站点生成器
 + lsyncd：[Lsyncd][20] 实时同步（Mirror）
 + ansible：Ansible 自动化工具
++ openjdk：OpenJDK Java 运行时
++ tmux：终端多路复用器
++ docker：Docker 容器
 
 ## 用法
 
@@ -57,6 +61,8 @@ selfhosted-server
 
 1. [创建 Vultr 服务器实例](https://linuxtoy.org/archives/selfhosted-server-1.html)
 2. [创建 Linode 服务器实例](https://linuxtoy.org/archives/selfhosted-server-2.html)
+3. [跟 Toy 玩自架服务器：创建 DigitalOcean Droplet](https://linuxtoy.org/archives/selfhosted-server-3.html)
+4. [跟 Toy 玩自架服务器：5 分钟搭一架梯子](https://linuxtoy.org/archives/selfhosted-server-4.html)
 
 ## 许可
 
