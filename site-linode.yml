@@ -29,6 +29,9 @@
     - dl.unixkoans.com
     - dashboard.unixkoans.com
     - shurl.unixkoans.com
+    - talk.linuxtoy.org
+    - resume.linuxtoy.org
+    - i.linuxtoy.org
   - role: nginx
     config:
       default: unixkoans.com
@@ -41,6 +44,9 @@
       dl: dl.unixkoans.com
       dashboard: dashboard.unixkoans.com
       shurl: shurl.unixkoans.com
+      talk: talk.linuxtoy.org
+      resume: resume.linuxtoy.org
+      img: i.linuxtoy.org
   - jenkins
   - debian-packaging
   - pelican
