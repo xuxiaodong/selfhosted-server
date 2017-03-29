@@ -1,0 +1,22 @@
+---
+- name: Add apt key
+  apt_key:
+    url: https://pkg.tarsnap.com/tarsnap-deb-packaging-key.asc
+    state: present
+
+- name: Add apt repository
+  apt_repository:
+    repo: "deb http://pkg.tarsnap.com/deb/jessie ./"
+    state: present
+
+- name: Install package
+  apt:
+    name: tarsnap
+    state: present
+
+- name: Register the machine
+  expect:
+    command: tarsnap-keygen --keyfile /root/tarsnap.key --user {{ user.email }} --machine {{ ansible_hostname }}
+    responses:
+      (?i)password: "{{ tarsnap_password }}"
+    creates: /root/tarsnap.key

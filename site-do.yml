@@ -14,6 +14,11 @@
 - hosts: digital_ocean
   become: True
 
+  vars_prompt:
+  - name: tarsnap_password
+    prompt: "Your Tarsnap account password"
+    private: no
+
   roles:
   - common
   - unattendedupgrades
@@ -49,3 +54,5 @@
   - syncthing
   - role: stikked
     paste_domain: paste.unixkoans.com
+  - ansible
+  - tarsnap
