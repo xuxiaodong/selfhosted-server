@@ -16,3 +16,9 @@
     dest: /etc/prometheus/prometheus.yml
     mode: 0644
   notify: Restart prometheus
+
+- name: Enable service
+  systemd:
+    name: prometheus
+    state: started
+    enabled: yes
