@@ -32,6 +32,8 @@
     - talk.linuxtoy.org
     - resume.linuxtoy.org
     - i.linuxtoy.org
+    - linuxtoy.org
+    - www.linuxtoy.org
   - role: nginx
     config:
       default: unixkoans.com
@@ -47,6 +49,7 @@
       talk: talk.linuxtoy.org
       resume: resume.linuxtoy.org
       img: i.linuxtoy.org
+      lintoy: linuxtoy.org
   - jenkins
   - debian-packaging
   - pelican
