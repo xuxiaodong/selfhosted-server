@@ -13,6 +13,7 @@
   - php5-mysql
   - php5-mcrypt
   - php5-apcu
+  - php5-readline
 
 - name: Generate php fpm config
   template:

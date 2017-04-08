@@ -19,6 +19,7 @@
   - unattendedupgrades
   - fail2ban
   - git-client
+  - git-server
   - shadowsocks
   - kcptun
   - ansible
@@ -36,3 +37,26 @@
   - debian-packaging
   - pelican
   - docker
+  - obnam
+  - role: certbot
+    domains:
+    - unixkoans.com
+    - www.unixkoans.com
+    - planet.unixkoans.com
+    - sync.unixkoans.com
+    - paste.unixkoans.com
+    - git.unixkoans.com
+    - fonts.unixkoans.com
+  - role: nginx
+    config:
+      default: unixkoans.com
+      planet: planet.unixkoans.com
+      sync: sync.unixkoans.com
+      paste: paste.unixkoans.com
+      git: git.unixkoans.com
+  - postgresql
+  - php
+  - ttrss
+  - role: stikked
+    paste_domain: paste.unixkoans.com
+  - syncthing
